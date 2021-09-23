@@ -10,31 +10,29 @@ namespace Models
         //Constructor overloading (this is an example of polymorphism)
         //The constructor behaves differently!
         //depending on what is passed in
-        public Customer(string name) : this()
+        public Customer(string Company) : this()
         {
-            this.Name = name;
-            this.CustomerDefaultStoreID = 100;
+            this.Company = company;
         }
 
         //constructor chaining
-        public Customer(string name, string address) : this(name)
+        public Customer(string Company, string State) : this(customer)
         {
-            this.Address = address;
-            this.CustomerDefaultStoreID = 100;
+            this.State = state;
         }
 
-        public Customer(string name, int age, string city) : this(name, age)
+        public Customer(string Company, string State, string Email) : this(name, address) : this(name, state)
         {
+            this.Email = email;
         }
 
         //Property
         public string CustomerID { get; set; }
-        public string Name { get; set; }
+        public string Company { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Address { get; set; }
-        public int CustomerDefaultStoreID { get; set; }
+        public string State { get; set; }
         public List<Order> Orders { get; set; }
     }
 }
