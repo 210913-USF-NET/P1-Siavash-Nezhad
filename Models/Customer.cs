@@ -13,12 +13,14 @@ namespace Models
         public Customer(string name) : this()
         {
             this.Name = name;
+            this.CustomerDefaultStoreID = 100;
         }
 
         //constructor chaining
-        public Customer(string name, int age) : this(name)
+        public Customer(string name, string address) : this(name)
         {
-            this.Age = age;
+            this.Address = address;
+            this.CustomerDefaultStoreID = 100;
         }
 
         public Customer(string name, int age, string city) : this(name, age)
@@ -26,12 +28,13 @@ namespace Models
         }
 
         //Property
+        public string CustomerID { get; set; }
         public string Name { get; set; }
-
-        public int Age { get; set; }
-
-        public string City { get; set; }
-
+        public string Email { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Address { get; set; }
+        public int CustomerDefaultStoreID { get; set; }
         public List<Order> Orders { get; set; }
     }
 }
