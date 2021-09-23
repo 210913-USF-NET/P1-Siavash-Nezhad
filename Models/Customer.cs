@@ -8,7 +8,7 @@ namespace Models
         public Customer() { }
 
         //Constructor overloading (this is an example of polymorphism)
-        //The constructor behaves differently
+        //The constructor behaves differently!
         //depending on what is passed in
         public Customer(string name) : this()
         {
