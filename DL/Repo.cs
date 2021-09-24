@@ -10,8 +10,8 @@ namespace DL
 {
     public class Repo : IRepo
     {
-        private Entity.Project00Context _context;
-        public Repo(Entity.Project00Context context)
+        private Entity.CaseSensitivedbContext _context;
+        public Repo(Entity.CaseSensitivedbContext context)
         {
             _context = context;
         }
@@ -34,7 +34,7 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public List<Inventory> GetAllInventories(int storeId)
+        public List<Inventory> GetAllInventories(int storeID)
         {
             throw new NotImplementedException();
         }
