@@ -3,19 +3,11 @@ using System.Collections.Generic;
 using Models;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Entity = DL.Entities;
 
 namespace DL
 {
     public class Repo : IRepo
     {
-        private Entity.CaseSensitivedbContext _context;
-        public Repo(Entity.CaseSensitivedbContext context)
-        {
-            _context = context;
-        }
-
         public Models.Customer AddCustomer(Models.Customer newCustomer)
         {
             throw new NotImplementedException();
@@ -29,7 +21,7 @@ namespace DL
         {
             throw new NotImplementedException();
         }
-        List<Customer> FindCustomerByName()
+        public List<Customer> FindCustomerByName()
         {
             throw new NotImplementedException();
         }
@@ -50,6 +42,10 @@ namespace DL
         }
 
         public Inventory UpdateStoreInventory(Inventory newInventory)
+        {
+            throw new NotImplementedException();
+        }
+        public Order AddOrder(Order newOrder)
         {
             throw new NotImplementedException();
         }

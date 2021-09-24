@@ -1,6 +1,6 @@
 using System;
 using Models;
-using RBBL;
+using StoreBL;
 using System.Collections.Generic;
 
 namespace UI
@@ -23,7 +23,7 @@ namespace UI
             {
                 Console.WriteLine("--------------------");
                 Console.WriteLine("Please select an option.");
-                Console.WriteLine("[0] Browse Inventory");
+                Console.WriteLine("[0] Browse a Store's Inventory");
                 Console.WriteLine("[1] Browse All Customers");
                 Console.WriteLine("[x] Sign Out");
 

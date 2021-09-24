@@ -1,35 +1,44 @@
 ﻿using System;
+using Models;
 using System.Collections.Generic;
 using DL;
-using Models;
 
-namespace StoreBL
+namespace BL
 {
-    public class BL : IBL
+    public class BLogic : IBL
     {
         private IRepo _repo;
-        //dependency injection
-        public BL(IRepo repo)
+
+        public BLogic(IRepo repo)
         {
             _repo = repo;
         }
+
+        // Stores [Add Store, Get Stores]
+        public StoreFront AddStoreFront(StoreFront store)
+        {
+            return _repo.AddStoreFront(store);
+        }
+
         public List<StoreFront> GetAllStoreFronts()
         {
             return _repo.GetAllStoreFronts();
         }
-        public Customer AddCustomer(Customer newCustomer)
+
+        
+        // Products [Add Product, Get Products]
+        public Product AddProduct(Product product)
         {
-            return _repo.AddCustomer(newCustomer);
+            return _repo.AddProduct(product);
+        }
+        public List<Product> GetAllProducts()
+        {
+            return _repo.GetAllProducts();
         }
 
-        public LineItem AddLineItem(LineItem newItem)
+        public Customer AddCustomer(Customer cust)
         {
-            return _repo.AddLineItem(newItem);
-        }
-
-        public Order AddOrder(Order newOrder)
-        {
-            return _repo.AddOrder(newOrder);
+            return _repo.AddCustomer(cust);
         }
 
         public List<Customer> GetAllCustomers()
@@ -37,24 +46,13 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         }
 
-        public List<Inventory> GetAllInventories(int storeID)
+        public Customer GetCustomer(int ID)
         {
-            return _repo.GetAllInventories(storeID);
+            return _repo.GetCustomer(ID);            
         }
-
-        public List<LineItem> GetAllLineItems(int input)
+        public Customer UpdateCustomer(Customer cust)
         {
-            return _repo.GetAllLineItems(input);
-        }
-
-        public List<Order> GetAllOrders()
-        {
-            return _repo.GetAllOrders();
-        }
-
-        public Inventory UpdateStoreInventory(Inventory newInventory)
-        {
-            return _repo.UpdateStoreInventory(newInventory);
+            return _repo.UpdateCustomer(cust);
         }
     }
 }

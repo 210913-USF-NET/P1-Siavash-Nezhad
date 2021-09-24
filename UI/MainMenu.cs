@@ -1,40 +1,57 @@
 using System;
 using Models;
+using BL;
+using DL;
+using System.Collections.Generic;
 
 namespace UI
 {
-    public class MainMenu :IMenu
+    public class MainMenu : IMenu
     {
-        private Customer customer;
-         public void Start()
+        public void Start()
         {
             bool exit = false;
             string input = "";
             do
             {
-                Console.WriteLine("Welcome to Case Sensitive");
-                Console.WriteLine("Please choose an option from the following:");
-                Console.WriteLine("[1] Log in to your account");
-                Console.WriteLine("[2] Register new user");
+                Console.WriteLine("Welcome to Case Sensitive!");
+                Console.WriteLine("Please choose an option or type 'x' to exit.");
+                Console.WriteLine("[0] New Account");
+                Console.WriteLine("[1] Log In");
                 Console.WriteLine("[x] Exit");
+
                 input = Console.ReadLine();
 
                 switch (input)
                 {
+
+
+                    case "admin":
+                        Console.WriteLine("Welcome Admin!");
+                        MenuFactory.GetMenu("admin").Start();
+                    break;
+
+                    case "0":
+                        Console.WriteLine("Let's create you a new account:");
+                        MenuFactory.GetMenu("new-customer").Start();
+                    break;
+                    
                     case "1":
-                        ViewAllCustomers();
-                        CustomerNavigation();
-                        break;
-                    case "2":
-                        CreateNewCustomer();
-                        break;
+                        MenuFactory.GetMenu("customer").Start();
+                    break;
+
                     case "x":
-                        Console.WriteLine("Thank you! Please come again!");
+                        Console.WriteLine("Thank you, please come again!");
                         exit = true;
-                        break;
+                    break;
+
                     default:
-                        Console.WriteLine("Invalid input");
+                        Console.WriteLine("Please enter a proper command.");
                         break;
                 }
+
             } while (!exit);
-     }
+
+        }
+    }
+}

@@ -1,17 +1,22 @@
-using System.Collections.Generic;
 using Models;
+using System.Collections.Generic;
 
-namespace StoreBL
+namespace BL
 {
     public interface IBL
     {
+        // Stores [Add Store, Get Stores]
+        StoreFront AddStoreFront(StoreFront store);
+        List<StoreFront> GetAllStoreFronts();
+
+        // Products [Add Product, Get Products]
+        Product AddProduct(Product product);
+        List<Product> GetAllProducts();
+        
+        // Customers [Add Customer, Get Customers/Customer, Update Customer]
+        Customer AddCustomer(Customer cust);
         List<Customer> GetAllCustomers();
-        Customer AddCustomer(Customer newCustomer);
-        List<Inventory> GetAllInventories(int storeID);
-        Inventory UpdateStoreInventory(Inventory newInventory);
-        LineItem AddLineItem(LineItem newItem);
-        List<LineItem> GetAllLineItems(int input);
-        Order AddOrder(Order newOrder);
-        List<Order> GetAllOrders();
+        Customer GetCustomer(int ID);
+        Customer UpdateCustomer(Customer cust);
     }
 }
