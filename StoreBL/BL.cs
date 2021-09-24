@@ -37,7 +37,7 @@ namespace StoreBL
             return _repo.GetAllCustomers();
         }
 
-        public List<Inventory> GetAllInventories(int storeId)
+        public List<Inventory> GetAllInventories(int storeID)
         {
             return _repo.GetAllInventories(storeID);
         }

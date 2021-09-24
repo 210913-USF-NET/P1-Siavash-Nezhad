@@ -1,7 +1,4 @@
 ﻿using System;
-using Models;
-using StoreBL;
-using DL;
 
 namespace UI
 {
@@ -9,8 +6,7 @@ namespace UI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Case Sensitive!");
-            new MainMenu(new BL(new ExampleRepo())).Start();
+            new MainMenu().Start();
         }
     }
 }
