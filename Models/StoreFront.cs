@@ -4,16 +4,14 @@ namespace Models
 {
     public class StoreFront
     {
-        public StoreFront() {}
-
+        public int StoreID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
 
-        public List<Inventory> Inventories { get; set; }
-
-        public override string ToString()
-        {
-            return $"Store Name: {this.Name} \nAddress: {this.Address}";
+        public override string ToString(){
+            return $"Store Name: {this.Name} Address : {this.Address}";
         }
+
+        public List<Inventory> Inventories { get; set; }
     }
 }
