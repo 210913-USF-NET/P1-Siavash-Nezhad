@@ -8,7 +8,9 @@ namespace Models
         public string Name { get; set; }
         public string Address { get; set; }
 
-        public override string ToString(){
+        //might be unnecessary
+        public override string ToString()
+        {
             return $"Store Name: {this.Name} Address : {this.Address}";
         }
 

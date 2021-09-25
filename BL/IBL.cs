@@ -14,9 +14,9 @@ namespace BL
         List<Product> GetAllProducts();
         
         // Customers [Add Customer, Get Customers/Customer, Update Customer]
-        Customer AddCustomer(Customer cust);
+        Customer AddCustomer(Customer customer);
         List<Customer> GetAllCustomers();
-        Customer GetCustomer(int ID);
-        Customer UpdateCustomer(Customer cust);
+        Customer GetCustomer(int customerID);
+        Customer UpdateCustomer(Customer customer);
     }
 }

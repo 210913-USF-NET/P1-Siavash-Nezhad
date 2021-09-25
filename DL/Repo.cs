@@ -1,51 +1,37 @@
 using System;
 using System.Collections.Generic;
-using Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Models;
 
 namespace DL
 {
     public class Repo : IRepo
     {
-        public Models.Customer AddCustomer(Models.Customer newCustomer)
+        // public Customer AddCustomer(Customer customer)
+        // {
+        //     throw new NotImplementedException();
+        // }
+        // public Customer UpdateCustomer(Customer customerToUpdate)
+        // {
+        //     throw new NotImplementedException();
+
+        // }
+        // public List<Customer> GetAllCustomers()
+        // {
+        //     throw new NotImplementedException();
+        // }
+        public Customer AddCustomer(Customer customer)
         {
             throw new NotImplementedException();
         }
 
-        public Models.LineItem AddLineItem(Models.LineItem newItem)
-        {
-           throw new NotImplementedException();
-        }
-        public List<Models.Customer> GetAllCustomers()
-        {
-            throw new NotImplementedException();
-        }
-        public List<Customer> FindCustomerByName()
+        public List<Customer> GetAllCustomers()
         {
             throw new NotImplementedException();
         }
 
-        public List<Inventory> GetAllInventories(int storeID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<LineItem> GetAllLineItems(int input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> GetAllOrders()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Inventory UpdateStoreInventory(Inventory newInventory)
-        {
-            throw new NotImplementedException();
-        }
-        public Order AddOrder(Order newOrder)
+        public Customer UpdateCustomer(Customer customerToUpdate)
         {
             throw new NotImplementedException();
         }
