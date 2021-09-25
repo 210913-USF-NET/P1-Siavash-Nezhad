@@ -28,16 +28,16 @@ namespace UI
 
                     case "admin":
                         Console.WriteLine("Welcome Admin!");
-                        MenuFactory.GetMenu("admin").Start();
+                        // MenuFactory.GetMenu("admin").Start();
                     break;
 
                     case "0":
                         Console.WriteLine("Let's create you a new account:");
-                        MenuFactory.GetMenu("new-customer").Start();
+                        // MenuFactory.GetMenu("new-customer").Start();
                     break;
                     
                     case "1":
-                        MenuFactory.GetMenu("customer").Start();
+                        // MenuFactory.GetMenu("customer").Start();
                     break;
 
                     case "x":
