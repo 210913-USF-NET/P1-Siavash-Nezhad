@@ -26,30 +26,26 @@ namespace DL.Entities
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+                entity.Property(e => e.OrderID).HasColumnName("OrderID");
 
                 entity.Property(e => e.DateOrder).HasColumnType("datetime");
 
-                entity.Property(e => e.UserId).HasColumnName("UserID");
+                entity.Property(e => e.CustomerID).HasColumnName("CustomerID");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.UserId)
+                    .HasForeignKey(d => d.UserID)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Orders__UserID__01142BA1");
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.ID).HasColumnName("ID");
 
-                entity.Property(e => e.Address1)
+                entity.Property(e => e.Address)
                     .IsRequired()
                     .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Address2)
-                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.City)
