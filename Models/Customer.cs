@@ -12,7 +12,12 @@ namespace Models
             this.Name = name;
         }
 
-        public Customer(string name, string address) : this(name)
+        public Customer(string name, string email) : this(name)
+        {
+            this.Email = email;
+        }
+
+        public Customer(string name, string email, string address) : this(name, email)
         {
             this.Address = address;
         }
@@ -20,9 +25,8 @@ namespace Models
         public int CustomerID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
         public string Address { get; set; }
-        public List<Order> Orders { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
     }
 }

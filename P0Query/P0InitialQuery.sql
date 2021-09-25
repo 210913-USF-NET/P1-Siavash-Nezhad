@@ -3,11 +3,10 @@ DROP TABLE Users;
 
 CREATE TABLE Users
 (
-    ID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerID INT PRIMARY KEY IDENTITY(1,1),
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(100) NOT NULL,
-    Address1 VARCHAR(200) NOT NULL,
-    Address2 VARCHAR(100),
+    Address VARCHAR(200) NOT NULL,
     City VARCHAR(100) NOT NULL,
     State CHAR(2) NOT NULL
 );
@@ -15,11 +14,11 @@ CREATE TABLE Users
 CREATE TABLE Orders
 (
     OrderID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(ID) NOT NULL,
+    CustomerID INT FOREIGN KEY REFERENCES Users(CustomerID) NOT NULL,
     DateOrder DATETIME NOT NULL
 );
 
-INSERT INTO Users (Name, Email, Address1, City, State) VALUES 
+INSERT INTO Users (Name, Email, Address, City, State) VALUES 
 ('Siavash Nezhad' , 'siavash1996@yahoo.com' , '2110 Aztec Thrush Drive' , 'Katy' , 'TX'),
 ('Chaddington Longbottom' , 'iamcringe247@hotmail.com' , '21 Jump Street' , 'Springfield' , 'MO'),
 ('Sarah Nezhad' , 'sarahnezhad@yahoo.com' , '2110 Aztec Thrush Drive' , 'Katy' , 'TX'),
