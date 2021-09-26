@@ -1,6 +1,7 @@
 using System;
 using Models;
 using System.Collections.Generic;
+using BL;
 
 namespace UI
 {
@@ -48,9 +49,9 @@ namespace UI
                 Console.WriteLine($"Address: {newAddress}");
                 Console.WriteLine($"City: {newCity}");
                 Console.WriteLine($"State: {newState}");
-                Console.WriteLine("Is this correct? [y] to confirm or [n] to reset");
+                Console.WriteLine("Is this correct? [Y] to confirm or [N] to reset");
 
-                input = String.ToLower(Console.ReadLine());
+                input = Console.ReadLine().ToLower();
 
                 switch(input){
                     case "y":
