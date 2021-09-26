@@ -3,7 +3,7 @@ using Models;
 using System.Collections.Generic;
 using DL;
 
-namespace BL
+namespace BLogic
 {
     public class BL : IBL
     {
@@ -13,86 +13,45 @@ namespace BL
         {
             _repo = repo;
         }
-
-        public Customer AddCustomer(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product AddProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
         public StoreFront AddStoreFront(StoreFront store)
         {
-            throw new NotImplementedException();
+            return _repo.AddStoreFront(store);
         }
-
-        public List<Customer> GetAllCustomers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Product> GetAllProducts()
-        {
-            throw new NotImplementedException();
-        }
-
         public List<StoreFront> GetAllStoreFronts()
         {
-            throw new NotImplementedException();
+            return _repo.GetAllStoreFronts();
         }
-
-        public Customer GetCustomer(int customerID)
+        public Product AddProduct(Product ProductID)
         {
-            throw new NotImplementedException();
+            return _repo.AddProduct(ProductID);
         }
-
+        public List<Product> GetAllProducts()
+        {
+            return _repo.GetAllProducts();
+        }
+        public Customer AddCustomer(Customer CustomerID)
+        {
+            return _repo.AddCustomer(CustomerID);
+        }
+        public List<Customer> GetAllCustomers()
+        {
+            return _repo.GetAllCustomers();
+        }
+        public Customer GetCustomer(int CustomerID)
+        {
+            return _repo.GetCustomer(CustomerID);            
+        }
         public Customer UpdateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            return _repo.UpdateCustomer(customer);
         }
-
-        // Stores [Add Store, Get Stores]
-        // public StoreFront AddStoreFront(StoreFront store)
-        // {
-        //     return _repo.AddStoreFront(store);
-        // }
-
-        // public List<StoreFront> GetAllStoreFronts()
-        // {
-        //     return _repo.GetAllStoreFronts();
-        // }
-
-
-        // // Products [Add Product, Get Products]
-        // public Product AddProduct(Product product)
-        // {
-        //     return _repo.AddProduct(product);
-        // }
-        // public List<Product> GetAllProducts()
-        // {
-        //     return _repo.GetAllProducts();
-        // }
-
-        // public Customer AddCustomer(Customer customer)
-        // {
-        //     return _repo.AddCustomer(customer);
-        // }
-
-        // public List<Customer> GetAllCustomers()
-        // {
-        //     return _repo.GetAllCustomers();
-        // }
-
-        // public Customer GetCustomer(int ID)
-        // {
-        //     return _repo.GetCustomer(customerID);            
-        // }
-        // public Customer UpdateCustomer(Customer customer)
-        // {
-        //     return _repo.UpdateCustomer(customer);
-        // }
+        public Inventory AddInventory(Inventory inventory)
+        {
+            return _repo.AddInventory(inventory);
+        }
+        public List<Inventory> GetInventory(int store)
+        {
+            return _repo.GetInventory(store);
+        }
     }
 }

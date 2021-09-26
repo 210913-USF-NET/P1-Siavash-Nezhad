@@ -1,7 +1,7 @@
 using System;
 using Models;
 using System.Collections.Generic;
-using BL;
+using BLogic;
 
 namespace UI
 {

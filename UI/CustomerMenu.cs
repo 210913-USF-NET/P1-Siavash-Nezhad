@@ -1,6 +1,6 @@
 using System;
 using Models;
-using BL;
+using BLogic;
 using System.Collections.Generic;
 
 namespace UI
@@ -32,10 +32,10 @@ namespace UI
                 Console.WriteLine("Loading...");
                 Console.WriteLine("--------------------");
 
-                List<Customer> allCustom = _bl.GetAllCustomers();
-                foreach (Customer custom in allCustom)
+                List<Customer> allCustomer = _bl.GetAllCustomers();
+                foreach (Customer customer in allCustomer)
                 {
-                    if (input2 == custom.EmailLogin())
+                    if (input2 == customer.Email.ToString())
                     {
                         Console.WriteLine("Login successful! Welcome back!");
                         exit = true;

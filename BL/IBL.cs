@@ -1,7 +1,7 @@
 using Models;
 using System.Collections.Generic;
 
-namespace BL
+namespace BLogic
 {
     public interface IBL
     {
@@ -16,7 +16,11 @@ namespace BL
         // Customers [Add Customer, Get Customers/Customer, Update Customer]
         Customer AddCustomer(Customer customer);
         List<Customer> GetAllCustomers();
-        Customer GetCustomer(int customerID);
+        Customer GetCustomer(int CustomerID);
         Customer UpdateCustomer(Customer customer);
+
+        // Inventories
+        List<Inventory> GetInventory(int StoreID);
+        Inventory AddInventory(Inventory inventory);
     }
 }
