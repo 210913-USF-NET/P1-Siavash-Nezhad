@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace DL.Entities
 {
-    public partial class User
+    public partial class Customer
     {
-        public User()
+        public Customer()
         {
             Orders = new HashSet<Order>();
         }
 
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Address { get; set; }

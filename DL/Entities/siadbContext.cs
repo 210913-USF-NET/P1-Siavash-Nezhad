@@ -17,31 +17,22 @@ namespace DL.Entities
         {
         }
 
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<LineItem> LineItems { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<StoreFront> StoreFronts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<Order>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
-                entity.Property(e => e.OrderID).HasColumnName("OrderID");
+                entity.ToTable("Customer");
 
-                entity.Property(e => e.DateOrder).HasColumnType("datetime");
-
-                entity.Property(e => e.CustomerID).HasColumnName("CustomerID");
-
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.UserID)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__UserID__01142BA1");
-            });
-
-            modelBuilder.Entity<User>(entity =>
-            {
-                entity.Property(e => e.ID).HasColumnName("ID");
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.Address)
                     .IsRequired()
@@ -66,8 +57,112 @@ namespace DL.Entities
                 entity.Property(e => e.State)
                     .IsRequired()
                     .HasMaxLength(2)
-                    .IsUnicode(false)
-                    .IsFixedLength(true);
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Inventory>(entity =>
+            {
+                entity.ToTable("Inventory");
+
+                entity.Property(e => e.InventoryId).HasColumnName("InventoryID");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.Inventories)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Inventory__Produ__3B40CD36");
+
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.Inventories)
+                    .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Inventory__Store__3A4CA8FD");
+            });
+
+            modelBuilder.Entity<LineItem>(entity =>
+            {
+                entity.ToTable("LineItem");
+
+                entity.Property(e => e.LineItemId).HasColumnName("LineItemID");
+
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.LineItems)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__LineItem__OrderI__3E1D39E1");
+
+                entity.HasOne(d => d.Product)
+                    .WithMany(p => p.LineItems)
+                    .HasForeignKey(d => d.ProductId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__LineItem__Produc__40058253");
+
+                entity.HasOne(d => d.Store)
+                    .WithMany(p => p.LineItems)
+                    .HasForeignKey(d => d.StoreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__LineItem__StoreI__3F115E1A");
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.ToTable("Order");
+
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.DateOrder).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Order__CustomerI__37703C52");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.ToTable("Product");
+
+                entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.Color)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DiscFormat)
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Price).HasColumnType("decimal(2, 2)");
+            });
+
+            modelBuilder.Entity<StoreFront>(entity =>
+            {
+                entity.HasKey(e => e.StoreId)
+                    .HasName("PK__StoreFro__3B82F0E10E94BECC");
+
+                entity.ToTable("StoreFront");
+
+                entity.Property(e => e.StoreId).HasColumnName("StoreID");
+
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
             });
 
             OnModelCreatingPartial(modelBuilder);

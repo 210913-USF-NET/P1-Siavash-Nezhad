@@ -4,7 +4,7 @@ namespace Models
     {
         public int InventoryID { get; set;}
         public int StoreID { get; set; }
-        public Product Item { get; set; }
+        public int ProductID { get; set; }
         public int Quantity { get; set; }
     }
 }
