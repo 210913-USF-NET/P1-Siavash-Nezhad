@@ -33,7 +33,7 @@ namespace UI
 
                     case "0":
                         Console.WriteLine("Let's create you a new account:");
-                        // MenuFactory.GetMenu("new-customer").Start();
+                        MenuFactory.GetMenu("new-customer").Start();
                     break;
                     
                     case "1":
