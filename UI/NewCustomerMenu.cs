@@ -29,7 +29,7 @@ namespace UI
             {
                 userInput:
                 Console.WriteLine("--------------------");
-                Console.WriteLine("Please enter the following.");
+                Console.WriteLine("Please enter the following:");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Full name");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -64,16 +64,30 @@ namespace UI
 
                 switch(input){
                     case "y":
-                        Customer newCustom = new Customer();
-                        newCustom.Name = newName;
-                        newCustom.Email = newEmail;
-                        newCustom.Address = newAddress;
-                        newCustom.City = newCity;
-                        newCustom.State = newState;
-                        Customer addedCustom = _bl.AddCustomer(newCustom);
-                        Console.WriteLine($"You created {addedCustom}");
-                        Console.WriteLine("New user created! Please log in with your email address.");
-                        exit = true;
+
+                        List<Customer> allCustom = _bl.GetAllCustomers();
+                        foreach (Customer customer in allCustom)
+                        {
+                            if (newEmail == customer.Email)
+                            {
+                                Console.WriteLine($"An account already exists with this email. Please use another email or log in.");
+                                exit = true;
+                            }
+                        }
+
+                        if (exit == false)
+                        {
+                            Customer newCustom = new Customer();
+                            newCustom.Name = newName;
+                            newCustom.Email = newEmail;
+                            newCustom.Address = newAddress;
+                            newCustom.City = newCity;
+                            newCustom.State = newState;
+                            // Customer addedCustom = _bl.AddCustomer(newCustom);
+                            Console.WriteLine($"You successfully created an account for {newName} at {newEmail}");
+                            Console.WriteLine("Please log in with your email address.");
+                            exit = true;
+                        }
                     break;
                     
                     case "n":

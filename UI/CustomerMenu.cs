@@ -1,6 +1,6 @@
-using System;
-using Models;
 using BLogic;
+using Models;
+using System;
 using System.Collections.Generic;
 
 namespace UI
@@ -8,25 +8,24 @@ namespace UI
     public class CustomerMenu : IMenu
     {
         private IBL _bl;
-        private CustomerService _customerService;
 
-        public CustomerMenu(IBL bl, CustomerService customerService)
+        public CustomerMenu(IBL bl)
         {
             _bl = bl;
-            _customerService = customerService;
         }
+
+        public static Customer currentUser;
 
         public void Start()
         {
-            bool exit = false;
-            string input2 = "";
-            
-            do
-            {
+                bool exit = false;
+                string custoemail = "";
+                
+                
                 Console.WriteLine("--------------------");
                 Console.WriteLine("Please log in with your email address.");
 
-                input2 = Console.ReadLine();
+                custoemail = Console.ReadLine();
 
                 Console.WriteLine("--------------------");
                 Console.WriteLine("Loading...");
@@ -35,11 +34,11 @@ namespace UI
                 List<Customer> allCustomer = _bl.GetAllCustomers();
                 foreach (Customer customer in allCustomer)
                 {
-                    if (input2 == customer.Email.ToString())
+                    if (custoemail == customer.Email.ToString())
                     {
-                        Console.WriteLine("Login successful! Welcome back!");
+                        currentUser = customer;
+                        Console.WriteLine($"Login successful! Welcome back, {customer.Name}!");
                         exit = true;
-                        break;
                     }
                 }
 
@@ -49,8 +48,73 @@ namespace UI
                     exit = true;
                 }
 
-            } while (!exit);
-        }
+            // Check default store. 
 
+            string input;
+            int parsedInput;
+            bool parseSuccess;
+            do
+            {
+                Console.WriteLine($"\nWelcome {currentUser.Name}!");
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("0- View Past Orders");
+                Console.WriteLine("1- Change Default Store");
+                Console.WriteLine("x- Exit");
+                Console.Write("Input: ");
+
+                switch (Console.ReadLine())
+                {
+                    case "0": 
+                        // View Past Orders
+                        Console.WriteLine("Not yet implemented.");
+                        break; 
+
+                    // case "1": 
+                    //     // Change Default Store
+                    //     List<StoreFront> allRestos = _bl.GetAllStoreFronts();
+                    //     if (allRestos.Count == 0)
+                    //     {
+                    //         Console.WriteLine("There are no stores.");
+                    //         break;
+                    //     }
+                    //     getStore: 
+                    //     for (int i = 0; i < allRestos.Count; i++) 
+                    //     {
+                    //         Console.WriteLine($"[{i}] {allRestos[i].Name}");
+                    //     }
+                        
+                    //     Console.Write("Which store would you like to set? ");
+                    //     input = Console.ReadLine();
+                    //     parseSuccess = int.TryParse(input, out parsedInput);
+                    //     if (parseSuccess && parsedInput >= 0 && parsedInput < allRestos.Count)
+                    //     {
+                    //         custo.StoreFrontID = parsedInput;
+                    //         Console.WriteLine($"Storefront changed to {allRestos[parsedInput].Name}");
+                    //     }
+                    //     else
+                    //     {
+                    //         Console.WriteLine("Invalid input, please try again.");
+                    //         goto getStore;
+                    //     }
+
+
+                        // update customer!
+                        // currentUser.hasDefaultStore = 1;
+                        // _bl.UpdateCustomer(currentUser);
+
+                        break;
+
+
+                        // update customer!
+                        _bl.UpdateCustomer(currentUser);
+
+                        break;
+
+                    case "x": 
+                        exit = true;
+                        break;
+                }
+            } while(!exit);
+        }
     }
 }
