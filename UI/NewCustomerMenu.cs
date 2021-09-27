@@ -30,15 +30,25 @@ namespace UI
                 userInput:
                 Console.WriteLine("--------------------");
                 Console.WriteLine("Please enter the following.");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Full name");
+                Console.ForegroundColor = ConsoleColor.White;
                 newName = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Email");
+                Console.ForegroundColor = ConsoleColor.White;
                 newEmail = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Address");
+                Console.ForegroundColor = ConsoleColor.White;
                 newAddress = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("City");
+                Console.ForegroundColor = ConsoleColor.White;
                 newCity = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("State");
+                Console.ForegroundColor = ConsoleColor.White;
                 newState = Console.ReadLine();
 
                 confirm:
