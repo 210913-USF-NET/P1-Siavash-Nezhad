@@ -14,7 +14,7 @@ namespace UI
             _bl = bl;
         }
 
-        public static Customer currentUser;
+        
 
         public void Start()
         {
@@ -36,7 +36,7 @@ namespace UI
                 {
                     if (custoemail == customer.Email.ToString())
                     {
-                        currentUser = customer;
+                        MenuFactory.currentUser = customer;
                         Console.WriteLine($"Login successful! Welcome back, {customer.Name}!");
                         exit = true;
                     }
@@ -55,12 +55,12 @@ namespace UI
             bool parseSuccess;
             do
             {
-                Console.WriteLine($"\nWelcome {currentUser.Name}!");
+                Console.WriteLine($"\nWelcome {MenuFactory.currentUser.Name}!");
                 Console.WriteLine("What would you like to do?");
-                Console.WriteLine("0- View Past Orders");
-                Console.WriteLine("1- Change Default Store");
-                Console.WriteLine("x- Exit");
-                Console.Write("Input: ");
+                Console.WriteLine("[0] - View Past Orders");
+                Console.WriteLine("[1] - Place a New Order");
+                Console.WriteLine("[2] - Place a New Order");
+                Console.WriteLine("[X]- Exit");
 
                 switch (Console.ReadLine())
                 {
@@ -69,45 +69,14 @@ namespace UI
                         Console.WriteLine("Not yet implemented.");
                         break; 
 
-                    // case "1": 
-                    //     // Change Default Store
-                    //     List<StoreFront> allRestos = _bl.GetAllStoreFronts();
-                    //     if (allRestos.Count == 0)
-                    //     {
-                    //         Console.WriteLine("There are no stores.");
-                    //         break;
-                    //     }
-                    //     getStore: 
-                    //     for (int i = 0; i < allRestos.Count; i++) 
-                    //     {
-                    //         Console.WriteLine($"[{i}] {allRestos[i].Name}");
-                    //     }
-                        
-                    //     Console.Write("Which store would you like to set? ");
-                    //     input = Console.ReadLine();
-                    //     parseSuccess = int.TryParse(input, out parsedInput);
-                    //     if (parseSuccess && parsedInput >= 0 && parsedInput < allRestos.Count)
-                    //     {
-                    //         custo.StoreFrontID = parsedInput;
-                    //         Console.WriteLine($"Storefront changed to {allRestos[parsedInput].Name}");
-                    //     }
-                    //     else
-                    //     {
-                    //         Console.WriteLine("Invalid input, please try again.");
-                    //         goto getStore;
-                    //     }
-
-
-                        // update customer!
-                        // currentUser.hasDefaultStore = 1;
-                        // _bl.UpdateCustomer(currentUser);
-
+                    case "1":
+                        //Place new order
+                        MenuFactory.GetMenu("ordering").Start();
                         break;
 
-
+                    case "2":
                         // update customer!
-                        _bl.UpdateCustomer(currentUser);
-
+                        _bl.UpdateCustomer(MenuFactory.currentUser);
                         break;
 
                     case "x": 
