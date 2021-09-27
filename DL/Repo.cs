@@ -8,23 +8,10 @@ namespace DL
 {
     public class Repo : IRepo
     {
-        // public Customer AddCustomer(Customer customer)
-        // {
-        //     throw new NotImplementedException();
-        // }
-        // public Customer UpdateCustomer(Customer customerToUpdate)
-        // {
-        //     throw new NotImplementedException();
-
-        // }
-        // public List<Customer> GetAllCustomers()
-        // {
-        //     throw new NotImplementedException();
-        // }
-        public Customer AddCustomer(Customer customer)
+        public Customer AddCustomer(Customer customer){
         {
             throw new NotImplementedException();
-        }
+        }}
 
         public Inventory AddInventory(Inventory inventory)
         {

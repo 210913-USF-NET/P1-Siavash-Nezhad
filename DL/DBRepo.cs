@@ -2,15 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Model = Models;
 using Entity = DL.Entities;
-using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
+using System.IO;
 using Models;
+using Model = Models;
 
 namespace DL
 {
     public class DBRepo : IRepo
     {
+        string connectionString = File.ReadAllText(@"../connectionString.txt");
         private Entity.siadbContext _context;
 
         public DBRepo(Entity.siadbContext context)
@@ -18,7 +20,7 @@ namespace DL
             _context = context;
         }
 
-        public Model.Customer AddCustomer(Model.Customer custom)
+        public Models.Customer AddCustomer(Models.Customer custom)
         {
             Entity.Customer customToAdd = new Entity.Customer()
             {
@@ -33,9 +35,9 @@ namespace DL
             _context.SaveChanges();
             _context.ChangeTracker.Clear();
 
-            return new Model.Customer()
+            return new Models.Customer()
             {
-                // CustomerID = customToAdd.CustomerID,
+                // CustomerID = customerToAdd.CustomerID,
                 Name = customToAdd.Name,
                 Email = customToAdd.Email,
                 Address = customToAdd.Address,
@@ -45,7 +47,7 @@ namespace DL
 
         }
 
-        public Model.Customer UpdateCustomer(Model.Customer customToUpdate)
+        public Models.Customer UpdateCustomer(Models.Customer customToUpdate)
         {
             throw new NotImplementedException();
 
@@ -73,19 +75,19 @@ namespace DL
 
         public List<StoreFront> GetAllStoreFronts()
         {
-            throw new NotImplementedException();
+            return _context.StoreFronts.Select(
+                StoreFront => new Models.StoreFront() 
+                {
+                    // StoreID = StoreFront.StoreID,
+                    Address = StoreFront.Address
+                }
+                ).ToList();
         }
 
         public StoreFront GetStoreFront(int StoreID)
         {
             throw new NotImplementedException();
         }
-
-        public Product AddProduct(Product product)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Product> GetAllProducts()
         {
             throw new NotImplementedException();
@@ -102,6 +104,35 @@ namespace DL
         }
 
         public List<Inventory> GetInventory(int StoreID)
+        {
+            throw new NotImplementedException();
+        }
+        List<StoreFront> IRepo.GetAllStoreFronts()
+        {
+            throw new NotImplementedException();
+        }
+
+        StoreFront IRepo.GetStoreFront(int StoreID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product AddProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Product> IRepo.GetAllProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        Customer IRepo.GetCustomer(int CustomerID)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Inventory> IRepo.GetInventory(int StoreID)
         {
             throw new NotImplementedException();
         }

@@ -23,6 +23,6 @@ namespace DL
 
         // Inventory
         Inventory AddInventory(Inventory inventory);
-        List<Inventory> GetInventory(int InventoryID);
+        List<Inventory> GetInventory(int StoreID);
     }
 }

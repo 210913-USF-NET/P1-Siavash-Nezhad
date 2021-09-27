@@ -50,10 +50,10 @@ namespace UI
 
         public void ViewAllCustomers()
         {
-            List<Customer> allCustom = _bl.GetAllCustomers();
-            foreach (Customer custom in allCustom)
+            List<Customer> allCustomer = _bl.GetAllCustomers();
+            foreach (Customer customer in allCustomer)
             {
-                Console.WriteLine(custom.ToString());
+                Console.WriteLine(customer.ToString());
             }
         }
 

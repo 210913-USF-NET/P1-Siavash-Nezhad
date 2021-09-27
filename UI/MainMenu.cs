@@ -27,8 +27,10 @@ namespace UI
 
 
                     case "admin":
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("Welcome Admin!");
-                        // MenuFactory.GetMenu("admin").Start();
+                        MenuFactory.GetMenu("admin").Start();
+                        Console.ForegroundColor = ConsoleColor.White;
                     break;
 
                     case "0":
@@ -37,7 +39,7 @@ namespace UI
                     break;
                     
                     case "1":
-                        // MenuFactory.GetMenu("customer").Start();
+                        MenuFactory.GetMenu("customer").Start();
                     break;
 
                     case "x":
@@ -46,7 +48,7 @@ namespace UI
                     break;
 
                     default:
-                        Console.WriteLine("Please enter a proper command.");
+                        Console.WriteLine("Please enter a valid command.");
                         break;
                 }
 

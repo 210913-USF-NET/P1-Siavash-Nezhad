@@ -31,15 +31,14 @@ namespace UI
                 Console.WriteLine("--------------------");
                 Console.WriteLine("Please enter the following.");
                 Console.WriteLine("Full name");
-                Console.WriteLine("Email");
-                Console.WriteLine("Address");
-                Console.WriteLine("City");
-                Console.WriteLine("State");
-
                 newName = Console.ReadLine();
+                Console.WriteLine("Email");
                 newEmail = Console.ReadLine();
+                Console.WriteLine("Address");
                 newAddress = Console.ReadLine();
+                Console.WriteLine("City");
                 newCity = Console.ReadLine();
+                Console.WriteLine("State");
                 newState = Console.ReadLine();
 
                 confirm:
