@@ -80,6 +80,7 @@ namespace UI
                         Console.WriteLine("Please select a valid format.");
                         goto Format;
                 }
+
                 Color:
                 Console.WriteLine("--------------------");
                 Console.WriteLine("What color should the case be?");
@@ -139,7 +140,7 @@ namespace UI
                         Console.WriteLine("Please select a valid disc capacity.");
                         goto DiscCap;
                 }
-
+                newLineItem.ProductID = tempProduct;
                 Quantity:
                 Console.WriteLine("--------------------");
                 Console.WriteLine("How many of these cases would you like to order?");
@@ -161,7 +162,7 @@ namespace UI
                     Console.WriteLine("Please select a valid quantity.");
                     goto Quantity;
                 }
-
+            newLineItem = _bl.AddLineItem(newLineItem);
             } while (!exit);
         }
         private List<StoreFront> GetAllStoreFronts()
