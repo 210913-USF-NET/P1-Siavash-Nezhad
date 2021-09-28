@@ -53,5 +53,9 @@ namespace BLogic
         {
             return _repo.GetInventory(store);
         }
+        public LineItem AddLineItem(LineItem lineitem)
+        {
+            return _repo.AddLineItem(lineitem);
+        }
     }
 }

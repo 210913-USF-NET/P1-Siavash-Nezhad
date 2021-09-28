@@ -48,19 +48,15 @@ namespace UI
                     exit = true;
                 }
 
-            // Check default store. 
-
-            string input;
-            int parsedInput;
-            bool parseSuccess;
+            CustomerHub:
             do
             {
                 Console.WriteLine($"\nWelcome {MenuFactory.currentUser.Name}!");
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("[0] - View Past Orders");
                 Console.WriteLine("[1] - Place a New Order");
-                Console.WriteLine("[2] - Place a New Order");
-                Console.WriteLine("[X]- Exit");
+                Console.WriteLine("[2] - Update My Information");
+                Console.WriteLine("[X] - Exit");
 
                 switch (Console.ReadLine())
                 {
@@ -71,7 +67,7 @@ namespace UI
 
                     case "1":
                         //Place new order
-                        MenuFactory.GetMenu("ordering").Start();
+                        MenuFactory.GetOrderMenu("ordering").Start(MenuFactory.currentUser);
                         break;
 
                     case "2":

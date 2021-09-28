@@ -83,7 +83,7 @@ namespace UI
                             newCustom.Address = newAddress;
                             newCustom.City = newCity;
                             newCustom.State = newState;
-                            // Customer addedCustom = _bl.AddCustomer(newCustom);
+                            Customer addedCustom = _bl.AddCustomer(newCustom);
                             Console.WriteLine($"You successfully created an account for {newName} at {newEmail}");
                             Console.WriteLine("Please log in with your email address.");
                             exit = true;

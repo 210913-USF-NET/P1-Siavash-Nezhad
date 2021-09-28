@@ -24,5 +24,6 @@ namespace DL
         // Inventory
         Inventory AddInventory(Inventory inventory);
         List<Inventory> GetInventory(int StoreID);
+        LineItem AddLineItem(LineItem lineitem);
     }
 }

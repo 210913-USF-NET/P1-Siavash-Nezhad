@@ -4,6 +4,6 @@ namespace UI
 {
     public interface IMenuCustomer
     {
-         void Start(Customer currentUser);
+        void Start(Customer currentUser);
     }
 }

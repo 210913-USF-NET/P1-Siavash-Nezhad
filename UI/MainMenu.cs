@@ -16,9 +16,9 @@ namespace UI
             {
                 Console.WriteLine("Welcome to Case Sensitive!");
                 Console.WriteLine("Please choose an option or type 'x' to exit.");
-                Console.WriteLine("[0] New Account");
-                Console.WriteLine("[1] Log In");
-                Console.WriteLine("[x] Exit");
+                Console.WriteLine("[0] - New Account");
+                Console.WriteLine("[1] - Log In");
+                Console.WriteLine("[x] - Exit");
 
                 input = Console.ReadLine();
 

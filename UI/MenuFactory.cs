@@ -26,10 +26,25 @@ namespace UI
                     return new NewCustomerMenu(new BL(new DBRepo(context)), new NewCustomerService());
                 case "customer":
                     return new CustomerMenu(new BL(new DBRepo(context)));
-                case "ordering":
-                    return new CustomerMenu(new BL(new DBRepo(context)));
                 case "admin":
                     return new AdminMenu(new BL(new DBRepo(context)), new AdminService());
+                default:
+                    return null;
+            }
+        }
+
+        public static IMenuCustomer GetOrderMenu(string menuString)
+        {
+            string connectionString = File.ReadAllText(@"../connectionString.txt");
+
+            DbContextOptions<siadbContext> options = new DbContextOptionsBuilder<siadbContext>().UseSqlServer(connectionString).Options;
+
+            siadbContext context = new siadbContext(options);
+
+            switch (menuString.ToLower())
+            {
+                case "ordering":
+                    return new Ordering(new BL(new DBRepo(context)));
                 default:
                     return null;
             }

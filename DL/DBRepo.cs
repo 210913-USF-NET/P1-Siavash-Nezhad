@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.IO;
 using Models;
 using Model = Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DL
 {
@@ -58,7 +59,7 @@ namespace DL
             return _context.Customers.Select(
                 customers => new Model.Customer()
                 {
-                    // CustomerID = customers.CustomerID,
+                    CustomerID = customers.CustomerId,
                     Name = customers.Name,
                     Email = customers.Email,
                     Address = customers.Address,
@@ -73,12 +74,12 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public List<StoreFront> GetAllStoreFronts()
+        public List<Model.StoreFront> GetAllStoreFronts()
         {
             return _context.StoreFronts.Select(
                 StoreFront => new Models.StoreFront() 
                 {
-                    // StoreID = StoreFront.StoreID,
+                    StoreID = StoreFront.StoreId,
                     Address = StoreFront.Address
                 }
                 ).ToList();
@@ -90,7 +91,16 @@ namespace DL
         }
         public List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _context.Products.Select(
+                Product => new Models.Product() 
+                {
+                    ProductID = Product.ProductId,
+                    DiscFormat = Product.DiscFormat,
+                    DiscCap = Product.DiscCap,
+                    Color = Product.Color,
+                    Price = Product.Price
+                }
+                ).ToList();
         }
 
         public Customer GetCustomer(int CustomerID)
@@ -105,36 +115,40 @@ namespace DL
 
         public List<Inventory> GetInventory(int StoreID)
         {
-            throw new NotImplementedException();
-        }
-        List<StoreFront> IRepo.GetAllStoreFronts()
-        {
-            throw new NotImplementedException();
-        }
+            // _context.Inventories.Include("Product").Select(i => 
+            // new Model.Inventory{
+            //     StoreID = i.StoreId,
+            //     Product = new Model.Product{
+            //         ProductID = i.Product.ProductId,
+            //     },
 
-        StoreFront IRepo.GetStoreFront(int StoreID)
-        {
+            // }).ToList();
             throw new NotImplementedException();
         }
-
         public Product AddProduct(Product product)
         {
             throw new NotImplementedException();
         }
-
-        List<Product> IRepo.GetAllProducts()
+        public Models.LineItem AddLineItem(Models.LineItem newlineitem)
         {
-            throw new NotImplementedException();
-        }
+            Entity.LineItem lineitemToAdd = new Entity.LineItem()
+            {
+                StoreId = newlineitem.StoreID,
+                ProductId = newlineitem.ProductID,
+                Quantity = newlineitem.Quantity
+            };
 
-        Customer IRepo.GetCustomer(int CustomerID)
-        {
-            throw new NotImplementedException();
-        }
+            lineitemToAdd = _context.Add(lineitemToAdd).Entity;
+            _context.SaveChanges();
+            _context.ChangeTracker.Clear();
 
-        List<Inventory> IRepo.GetInventory(int StoreID)
-        {
-            throw new NotImplementedException();
+            return new Models.LineItem()
+            {
+                // CustomerID = customerToAdd.CustomerID,
+                StoreID = newlineitem.StoreID,
+                ProductID = newlineitem.ProductID,
+                Quantity = newlineitem.Quantity
+            };
         }
     }
 }

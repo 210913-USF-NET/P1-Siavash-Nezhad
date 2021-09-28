@@ -22,5 +22,6 @@ namespace BLogic
         // Inventories
         List<Inventory> GetInventory(int StoreID);
         Inventory AddInventory(Inventory inventory);
+        LineItem AddLineItem(LineItem lineitem);
     }
 }
