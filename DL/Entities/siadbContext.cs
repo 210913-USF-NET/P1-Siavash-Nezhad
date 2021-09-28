@@ -74,13 +74,13 @@ namespace DL.Entities
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Produ__3B40CD36");
+                    .HasConstraintName("FK__Inventory__Produ__5AB9788F");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.Inventories)
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Inventory__Store__3A4CA8FD");
+                    .HasConstraintName("FK__Inventory__Store__59C55456");
             });
 
             modelBuilder.Entity<LineItem>(entity =>
@@ -99,19 +99,19 @@ namespace DL.Entities
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LineItem__OrderI__3E1D39E1");
+                    .HasConstraintName("FK__LineItem__OrderI__690797E6");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LineItem__Produc__40058253");
+                    .HasConstraintName("FK__LineItem__Produc__6AEFE058");
 
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.LineItems)
                     .HasForeignKey(d => d.StoreId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__LineItem__StoreI__3F115E1A");
+                    .HasConstraintName("FK__LineItem__StoreI__69FBBC1F");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -122,13 +122,15 @@ namespace DL.Entities
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.DateOrder).HasColumnType("datetime");
+                entity.Property(e => e.DateOrder)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Order__CustomerI__37703C52");
+                    .HasConstraintName("FK__Order__CustomerI__65370702");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -147,7 +149,7 @@ namespace DL.Entities
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Price).HasColumnType("decimal(2, 2)");
+                entity.Property(e => e.Price).HasColumnType("decimal(3, 2)");
             });
 
             modelBuilder.Entity<StoreFront>(entity =>

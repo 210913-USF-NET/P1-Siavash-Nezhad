@@ -21,9 +21,9 @@ namespace BLogic
         {
             return _repo.GetAllStoreFronts();
         }
-        public Product AddProduct(Product ProductID)
+        public Product GetProduct(int ProductID)
         {
-            return _repo.AddProduct(ProductID);
+            return _repo.GetProduct(ProductID);
         }
         public List<Product> GetAllProducts()
         {
@@ -56,6 +56,10 @@ namespace BLogic
         public LineItem AddLineItem(LineItem lineitem)
         {
             return _repo.AddLineItem(lineitem);
+        }
+        public Models.Order AddOrder(Models.Customer cust)
+        {
+            return _repo.AddOrder(cust);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace UI
         {
             int tempProduct = 0;
             Models.LineItem newLineItem = new Models.LineItem();
+            List<LineItem> myCart = new List<LineItem>();
             bool exit = false;
             do
             {
@@ -141,6 +142,8 @@ namespace UI
                         goto DiscCap;
                 }
                 newLineItem.ProductID = tempProduct;
+                myCart.Add(newLineItem);
+                
                 Quantity:
                 Console.WriteLine("--------------------");
                 Console.WriteLine("How many of these cases would you like to order?");
@@ -162,6 +165,40 @@ namespace UI
                     Console.WriteLine("Please select a valid quantity.");
                     goto Quantity;
                 }
+
+                Confirm:
+                Product myProduct = _bl.GetProduct(tempProduct);
+                Console.WriteLine("--------------------");
+                Console.WriteLine($"Format: {myProduct.DiscFormat}");
+                Console.WriteLine($"Disc Capacity: {myProduct.DiscCap}");
+                Console.WriteLine($"Case Color: {myProduct.Color}");
+                Console.WriteLine($"Quantity: {newLineItem.Quantity}");
+                Console.WriteLine("Is this correct? [Y] to confirm or [N] to reset");
+            
+                string input = Console.ReadLine().ToLower();
+
+                switch(input){
+                    case "y":
+
+                        // List<Customer> allCustom = _bl.GetAllCustomers();
+                        // foreach (Customer customer in allCustom)
+                        // {
+                        //     if (newEmail == customer.Email)
+                        //     {
+                        //         Console.WriteLine($"An account already exists with this email. Please use another email or log in.");
+                        //         break;
+                        //     }
+                        // }
+                    break;
+
+                    case "n":
+                        goto Order;
+
+                    default:
+                        Console.WriteLine("Please enter [Y] or [N]");
+                        goto Confirm;
+                }
+            
             newLineItem = _bl.AddLineItem(newLineItem);
             } while (!exit);
         }

@@ -12,7 +12,7 @@ namespace DL
         StoreFront GetStoreFront(int StoreID);
 
         // Products [Add Product, Get Products]
-        Product AddProduct(Product product);
+        Product GetProduct(int ProductID);
         List<Product> GetAllProducts();
 
         // Customers [Add Customer, Get All Customers, Get Specific Customer, Update Customer]
@@ -25,5 +25,6 @@ namespace DL
         Inventory AddInventory(Inventory inventory);
         List<Inventory> GetInventory(int StoreID);
         LineItem AddLineItem(LineItem lineitem);
+        Order AddOrder(Customer cust);
     }
 }

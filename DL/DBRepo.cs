@@ -125,9 +125,17 @@ namespace DL
             // }).ToList();
             throw new NotImplementedException();
         }
-        public Product AddProduct(Product product)
+        public Models.Product GetProduct(int ProductID)
         {
-            throw new NotImplementedException();
+            Entity.Product myProduct = _context.Products.FirstOrDefault(x => x.ProductId == ProductID);
+            return new Models.Product()
+            {
+                ProductID = myProduct.ProductId,
+                DiscFormat = myProduct.DiscFormat,
+                DiscCap = myProduct.DiscCap,
+                Color = myProduct.Color,
+                Price = myProduct.Price
+            };
         }
         public Models.LineItem AddLineItem(Models.LineItem newlineitem)
         {
@@ -148,6 +156,24 @@ namespace DL
                 StoreID = newlineitem.StoreID,
                 ProductID = newlineitem.ProductID,
                 Quantity = newlineitem.Quantity
+            };
+        }
+        public Models.Order AddOrder(Models.Customer cust)
+        {
+            Entity.Order orderToAdd = new Entity.Order()
+            {
+                CustomerId = cust.CustomerID
+            }
+            ;
+            orderToAdd = _context.Add(orderToAdd).Entity;
+            _context.SaveChanges();
+            _context.ChangeTracker.Clear();
+
+            return new Models.Order()
+            {
+                OrderID = orderToAdd.OrderId,
+                CustomerID = orderToAdd.CustomerId,
+                DateOrder = orderToAdd.DateOrder
             };
         }
     }
