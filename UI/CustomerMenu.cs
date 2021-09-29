@@ -45,10 +45,10 @@ namespace UI
                 if (exit == false)
                 {
                     Console.WriteLine("Email does not match our records. Please try again or sign up for an account.");
-                    exit = true;
+                    return;
                 }
 
-            CustomerHub:
+            // CustomerHub:
             do
             {
                 Console.WriteLine($"\nWelcome {MenuFactory.currentUser.Name}!");
@@ -76,7 +76,8 @@ namespace UI
                         break;
 
                     case "x": 
-                        exit = true;
+                        MenuFactory.currentUser = null;
+                        MenuFactory.GetMenu("main").Start();
                         break;
                 }
             } while(!exit);

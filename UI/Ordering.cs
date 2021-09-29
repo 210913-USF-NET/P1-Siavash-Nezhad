@@ -20,13 +20,12 @@ namespace UI
         {
             int tempProduct = 0;
             Models.LineItem newLineItem = new Models.LineItem();
-            List<LineItem> myCart = new List<LineItem>();
             bool exit = false;
             do
             {
                 Order:
                 Console.WriteLine("--------------------");
-                Console.WriteLine("Which location is this order for?");
+                Console.WriteLine("Please enter the StoreID of your preferred store location.");
                 List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
                 foreach (StoreFront storefront in allStoreFronts)
                 {
@@ -142,9 +141,11 @@ namespace UI
                         goto DiscCap;
                 }
                 newLineItem.ProductID = tempProduct;
+                List<LineItem> myCart = new List<LineItem>();
                 myCart.Add(newLineItem);
-                
-                Quantity:
+                Order thisOrder = _bl.AddOrder(MenuFactory.currentUser);
+
+            Quantity:
                 Console.WriteLine("--------------------");
                 Console.WriteLine("How many of these cases would you like to order?");
                 Console.WriteLine("Please enter a whole number between 1 and 100.");
@@ -168,28 +169,32 @@ namespace UI
 
                 Confirm:
                 Product myProduct = _bl.GetProduct(tempProduct);
+                decimal LineItemPrice = myProduct.Price*newLineItem.Quantity;
                 Console.WriteLine("--------------------");
                 Console.WriteLine($"Format: {myProduct.DiscFormat}");
                 Console.WriteLine($"Disc Capacity: {myProduct.DiscCap}");
                 Console.WriteLine($"Case Color: {myProduct.Color}");
                 Console.WriteLine($"Quantity: {newLineItem.Quantity}");
+                Console.WriteLine($"Subtotal: ${LineItemPrice}");
                 Console.WriteLine("Is this correct? [Y] to confirm or [N] to reset");
             
                 string input = Console.ReadLine().ToLower();
 
                 switch(input){
                     case "y":
-
-                        // List<Customer> allCustom = _bl.GetAllCustomers();
-                        // foreach (Customer customer in allCustom)
-                        // {
-                        //     if (newEmail == customer.Email)
-                        //     {
-                        //         Console.WriteLine($"An account already exists with this email. Please use another email or log in.");
-                        //         break;
-                        //     }
-                        // }
-                    break;
+                        newLineItem.OrderID = thisOrder.OrderID;
+                        newLineItem = _bl.AddLineItem(newLineItem);
+                        Console.WriteLine("Would you like to add more to your order?");
+                        Console.WriteLine("[Y] to add more, [N] to finalize purchases");
+                        string input2 = Console.ReadLine().ToLower();
+                        OrderMore:
+                        if(input2 == "y")
+                            goto Order;
+                        else if(input2 == "n")
+                            thisOrder = _bl.AddOrder(thisOrder);
+                        else
+                            Console.WriteLine("Please enter [Y] or [N]");
+                            goto OrderMore;
 
                     case "n":
                         goto Order;
@@ -198,8 +203,6 @@ namespace UI
                         Console.WriteLine("Please enter [Y] or [N]");
                         goto Confirm;
                 }
-            
-            newLineItem = _bl.AddLineItem(newLineItem);
             } while (!exit);
         }
         private List<StoreFront> GetAllStoreFronts()

@@ -141,6 +141,7 @@ namespace DL
         {
             Entity.LineItem lineitemToAdd = new Entity.LineItem()
             {
+                OrderId = newlineitem.OrderID,
                 StoreId = newlineitem.StoreID,
                 ProductId = newlineitem.ProductID,
                 Quantity = newlineitem.Quantity
@@ -152,7 +153,7 @@ namespace DL
 
             return new Models.LineItem()
             {
-                // CustomerID = customerToAdd.CustomerID,
+                OrderID = newlineitem.OrderID,
                 StoreID = newlineitem.StoreID,
                 ProductID = newlineitem.ProductID,
                 Quantity = newlineitem.Quantity
