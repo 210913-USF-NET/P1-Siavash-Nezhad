@@ -20,6 +20,7 @@ namespace UI
         {
             int tempProduct = 0;
             Models.LineItem newLineItem = new Models.LineItem();
+            Order thisOrder = _bl.AddOrder(MenuFactory.currentUser);
             bool exit = false;
             do
             {
@@ -143,9 +144,9 @@ namespace UI
                 newLineItem.ProductID = tempProduct;
                 List<LineItem> myCart = new List<LineItem>();
                 myCart.Add(newLineItem);
-                Order thisOrder = _bl.AddOrder(MenuFactory.currentUser);
 
             Quantity:
+                Inventory storeInventory = _bl.GetSingleInventory(newLineItem.StoreID,newLineItem.ProductID);
                 Console.WriteLine("--------------------");
                 Console.WriteLine("How many of these cases would you like to order?");
                 Console.WriteLine("Please enter a whole number between 1 and 100.");
@@ -154,7 +155,15 @@ namespace UI
                 format = Console.ReadLine().ToLower();
                 if (Int32.Parse(format) > 0 && Int32.Parse(format) < 101)
                 {
-                    newLineItem.Quantity = Int32.Parse(format);
+                    if (Int32.Parse(format) > storeInventory.Quantity)
+                    {
+                        Console.WriteLine("Sorry, we do not have sufficient stock.");
+                        Console.WriteLine($"Your selected store only has {storeInventory.Quantity} of your specified cases.");
+                        Console.WriteLine("Please select a lower quantity or cancel the order.");
+                        goto Quantity;
+                    }
+                    else
+                        newLineItem.Quantity = Int32.Parse(format);
                 }
                 else if (format == "x")
                 {
@@ -189,12 +198,19 @@ namespace UI
                         string input2 = Console.ReadLine().ToLower();
                         OrderMore:
                         if(input2 == "y")
+                        {
                             goto Order;
-                        else if(input2 == "n")
-                            thisOrder = _bl.AddOrder(thisOrder);
+                        }
+                        else if (input2 == "n")
+                        {
+                            _bl.UpdateStock(newLineItem.StoreID,newLineItem);
+                            MenuFactory.GetMenu("customer").Start();
+                        }
                         else
+                        {
                             Console.WriteLine("Please enter [Y] or [N]");
                             goto OrderMore;
+                        }break;
 
                     case "n":
                         goto Order;
