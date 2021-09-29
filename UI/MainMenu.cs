@@ -52,8 +52,10 @@ namespace UI
                     break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("--------------------");
                         Console.WriteLine("Please enter a valid command.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
 

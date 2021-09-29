@@ -36,7 +36,9 @@ namespace UI
                 string userinput = Console.ReadLine().ToLower();
                 if (userinput == "x")
                 {
-                    MenuFactory.GetMenu("customer").Start();
+                    MenuFactory.currentUser = null;
+                    break;
+                    // MenuFactory.GetMenu("customer").Start();
                 }
                 else
                 {
@@ -78,7 +80,9 @@ namespace UI
                         goto Order;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please select a valid format.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto Format;
                 }
 
@@ -105,7 +109,9 @@ namespace UI
                         goto Order;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please select a valid color.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto Color;
                 }
 
@@ -138,7 +144,9 @@ namespace UI
                         goto Order;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please select a valid disc capacity.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto DiscCap;
                 }
                 newLineItem.ProductID = tempProduct;
@@ -153,26 +161,30 @@ namespace UI
                 Console.WriteLine("Alternatively, type [X] to cancel the order");
 
                 format = Console.ReadLine().ToLower();
-                if (Int32.Parse(format) > 0 && Int32.Parse(format) < 101)
+                if (format == "x")
+                {
+                    Console.WriteLine("Order successfully cancelled");
+                    goto Order;
+                }
+                else if (Int32.Parse(format) > 0 && Int32.Parse(format) < 101)
                 {
                     if (Int32.Parse(format) > storeInventory.Quantity)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Sorry, we do not have sufficient stock.");
                         Console.WriteLine($"Your selected store only has {storeInventory.Quantity} of your specified cases.");
                         Console.WriteLine("Please select a lower quantity or cancel the order.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto Quantity;
                     }
                     else
                         newLineItem.Quantity = Int32.Parse(format);
                 }
-                else if (format == "x")
-                {
-                    Console.WriteLine("Order successfully cancelled");
-                    goto Order;
-                }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please select a valid quantity.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     goto Quantity;
                 }
 
@@ -204,11 +216,14 @@ namespace UI
                         else if (input2 == "n")
                         {
                             _bl.UpdateStock(newLineItem.StoreID,newLineItem);
+                            MenuFactory.currentUser = null;
                             MenuFactory.GetMenu("customer").Start();
                         }
                         else
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Please enter [Y] or [N]");
+                            Console.ForegroundColor = ConsoleColor.White;
                             goto OrderMore;
                         }break;
 
@@ -219,7 +234,7 @@ namespace UI
                         Console.WriteLine("Please enter [Y] or [N]");
                         goto Confirm;
                 }
-            } while (!exit);
+            } while (!exit && MenuFactory.currentUser != null);
         }
         private List<StoreFront> GetAllStoreFronts()
         {

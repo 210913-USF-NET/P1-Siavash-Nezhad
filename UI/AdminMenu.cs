@@ -32,6 +32,8 @@ namespace UI
                 switch (Console.ReadLine())
                 {
                     case "0":
+                        Console.WriteLine("--------------------");
+                        Console.WriteLine("Enter the Store ID to check inventory for");
                         int StoreID = Int32.Parse(Console.ReadLine());
                         List<Inventory> storeInventory = GetInventory(StoreID);
                         foreach (Inventory inventory in storeInventory)
@@ -70,7 +72,9 @@ namespace UI
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please enter a proper command.");
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         break;
                 }
 
@@ -113,8 +117,10 @@ namespace UI
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("--------------------");
                 Console.WriteLine("No results found!");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 return null;
             }
             return new List<Models.Customer>();

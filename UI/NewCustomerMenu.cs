@@ -70,7 +70,9 @@ namespace UI
                         {
                             if (newEmail == customer.Email)
                             {
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine($"An account already exists with this email. Please use another email or log in.");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 exit = true;
                             }
                         }
@@ -98,7 +100,9 @@ namespace UI
                         break;
 
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please enter [Y] or [N]");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto confirm;
                 }
             } while (!exit);

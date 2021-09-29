@@ -54,10 +54,10 @@ namespace DL
 
         }
 
-        public List<Model.Customer> GetAllCustomers()
+        public List<Models.Customer> GetAllCustomers()
         {
-            return _context.Customers.Select(
-                customers => new Model.Customer()
+            return _context.Customers.AsNoTracking().Select(
+                customers => new Models.Customer()
                 {
                     CustomerID = customers.CustomerId,
                     Name = customers.Name,
@@ -74,7 +74,7 @@ namespace DL
         //     throw new NotImplementedException();
         // }
 
-        public List<Model.StoreFront> GetAllStoreFronts()
+        public List<Models.StoreFront> GetAllStoreFronts()
         {
             return _context.StoreFronts.Select(
                 StoreFront => new Models.StoreFront()

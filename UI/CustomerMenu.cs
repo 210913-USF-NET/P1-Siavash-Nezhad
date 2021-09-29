@@ -14,7 +14,6 @@ namespace UI
             _bl = bl;
         }
 
-        
 
         public void Start()
         {
@@ -34,20 +33,25 @@ namespace UI
                 List<Customer> allCustomer = _bl.GetAllCustomers();
                 foreach (Customer customer in allCustomer)
                 {
-                    if (custoemail == customer.Email.ToString())
+                    if (custoemail == customer.Email)
                     {
                         MenuFactory.currentUser = customer;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"Login successful! Welcome back, {customer.Name}!");
+                        Console.ForegroundColor = ConsoleColor.White;
                         goto CustomerHub;
-                    }
-                    else 
-                    {
-                    Console.WriteLine("Email does not match our records. Please try again or sign up for an account.");
-                    Console.WriteLine("--------------------");
-                    exit = true;
-                    return;
-                    }
+                    } 
                 }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                MenuFactory.currentUser = null;
+                Console.WriteLine("Email does not match our records. Please try again or sign up for an account.");
+                Console.WriteLine("--------------------");
+                Console.ForegroundColor = ConsoleColor.White;
+                MenuFactory.currentUser = null;
+                exit = true;
+                return;
+                
             
 
                 CustomerHub:
@@ -62,7 +66,9 @@ namespace UI
                     {
                         case "0": 
                             // View Past Orders
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Not yet implemented.");
+                            Console.ForegroundColor = ConsoleColor.White;
                             break; 
 
                         case "1":
