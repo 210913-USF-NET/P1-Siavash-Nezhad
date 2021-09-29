@@ -103,10 +103,21 @@ namespace DL
                 ).ToList();
         }
 
-        public Customer GetCustomer(int CustomerID)
+        public List<Models.Customer> GetCustomer(string name)
         {
-            throw new NotImplementedException();
+            return _context.Customers.Where(u => u.Name.ToLower().Contains(name.ToLower())).Select(
+                c => new Models.Customer()
+            {
+                        CustomerID = c.CustomerId,
+                        Name = c.Name,
+                        Email = c.Email,
+                        Address = c.Address,
+                        City = c.City,
+                        State = c.State
+            }).ToList();
         }
+
+
 
         // public Inventory AddInventory(Inventory inventory)
         // {

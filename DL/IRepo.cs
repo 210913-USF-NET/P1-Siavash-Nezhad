@@ -6,23 +6,13 @@ namespace DL
 {
     public interface IRepo
     {
-        // Stores [Add Store, Get Stores]
-        // StoreFront AddStoreFront(StoreFront store);
         List<StoreFront> GetAllStoreFronts();
-        // StoreFront GetStoreFront(int StoreID);
-
-        // Products [Add Product, Get Products]
         Product GetProduct(int ProductID);
         List<Product> GetAllProducts();
-
-        // Customers [Add Customer, Get All Customers, Get Specific Customer, Update Customer]
         Customer AddCustomer(Customer customer);
         List<Customer> GetAllCustomers();
-        Customer GetCustomer(int CustomerID);
+        List<Models.Customer> GetCustomer(string name);
         Customer UpdateCustomer(Customer customer);
-
-        // Inventory
-        // Inventory AddInventory(Inventory inventory);
         List<Inventory> GetInventory(int StoreID);
         Inventory GetSingleInventory(int StoreID, int ProductID);
         LineItem AddLineItem(LineItem lineitem);

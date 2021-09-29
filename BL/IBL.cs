@@ -14,9 +14,8 @@ namespace BLogic
         List<Product> GetAllProducts();
         
         // Customers [Add Customer, Get Customers/Customer, Update Customer]
-        Customer AddCustomer(Customer customer);
+        Models.Customer AddCustomer(Customer customer);
         List<Customer> GetAllCustomers();
-        Customer GetCustomer(int CustomerID);
         Customer UpdateCustomer(Customer customer);
 
         // Inventories
@@ -26,6 +25,7 @@ namespace BLogic
         LineItem AddLineItem(LineItem lineitem);
 
         Order AddOrder(Customer cust);
+        List<Models.Customer> GetCustomer(string name);
         void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct);
     }
 }

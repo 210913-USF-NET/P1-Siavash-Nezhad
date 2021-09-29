@@ -194,7 +194,7 @@ namespace UI
                         newLineItem.OrderID = thisOrder.OrderID;
                         newLineItem = _bl.AddLineItem(newLineItem);
                         Console.WriteLine("Would you like to add more to your order?");
-                        Console.WriteLine("[Y] to add more, [N] to finalize purchases");
+                        Console.WriteLine("[Y] to add more or [N] to finalize purchases");
                         string input2 = Console.ReadLine().ToLower();
                         OrderMore:
                         if(input2 == "y")

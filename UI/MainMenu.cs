@@ -14,6 +14,7 @@ namespace UI
             string input = "";
             do
             {
+                Console.WriteLine("--------------------");
                 Console.WriteLine("Welcome to Case Sensitive!");
                 Console.WriteLine("Please choose an option or type 'x' to exit.");
                 Console.WriteLine("[0] - New Account");
@@ -28,12 +29,14 @@ namespace UI
 
                     case "admin":
                         Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("--------------------");
                         Console.WriteLine("Welcome Admin!");
                         MenuFactory.GetMenu("admin").Start();
                         Console.ForegroundColor = ConsoleColor.White;
                     break;
 
                     case "0":
+                        Console.WriteLine("--------------------");
                         Console.WriteLine("Let's create you a new account:");
                         MenuFactory.GetMenu("new-customer").Start();
                     break;
@@ -43,11 +46,13 @@ namespace UI
                     break;
 
                     case "x":
+                        Console.WriteLine("--------------------");
                         Console.WriteLine("Thank you, please come again!");
                         exit = true;
                     break;
 
                     default:
+                        Console.WriteLine("--------------------");
                         Console.WriteLine("Please enter a valid command.");
                         break;
                 }

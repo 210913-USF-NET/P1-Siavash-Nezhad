@@ -58,7 +58,7 @@ namespace UI
                 Console.WriteLine($"Address: {newAddress}");
                 Console.WriteLine($"City: {newCity}");
                 Console.WriteLine($"State: {newState}");
-                Console.WriteLine("Is this correct? [Y] to confirm or [N] to reset");
+                Console.WriteLine("Is this correct? [Y] to confirm, [N] to reset, or [X] to return to the Main Menu");
 
                 input = Console.ReadLine().ToLower();
 
@@ -92,6 +92,10 @@ namespace UI
                     
                     case "n":
                         goto userInput;
+
+                    case "x":
+                        exit = true;
+                        break;
 
                     default:
                         Console.WriteLine("Please enter [Y] or [N]");

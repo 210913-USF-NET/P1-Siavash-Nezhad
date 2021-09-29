@@ -37,9 +37,9 @@ namespace BLogic
         {
             return _repo.GetAllCustomers();
         }
-        public Customer GetCustomer(int CustomerID)
+        public List<Models.Customer> GetCustomer(string name)
         {
-            return _repo.GetCustomer(CustomerID);            
+            return _repo.GetCustomer(name);
         }
         public Customer UpdateCustomer(Customer customer)
         {
