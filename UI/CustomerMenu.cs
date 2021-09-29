@@ -49,7 +49,7 @@ namespace UI
                 Console.ForegroundColor = ConsoleColor.White;
                 MenuFactory.currentUser = null;
                 exit = true;
-                return;
+                break;
                 
             
 
