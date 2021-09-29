@@ -30,7 +30,7 @@ namespace UI
                     case "shrek":
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("--------------------");
-                        Console.WriteLine("Welcome Shrek!");
+                        Console.WriteLine("What are ya doin' in my swamp?!");
                         MenuFactory.GetMenu("admin").Start();
                         Console.ForegroundColor = ConsoleColor.White;
                     break;
