@@ -124,15 +124,17 @@ namespace DL
         //     throw new NotImplementedException();
         // }
 
-        public List<Inventory> GetInventory(int StoreID)
+        public List<Models.Inventory> GetInventory(int StoreID)
         {
-            return _context.Inventories.Select
-            (i => new Model.Inventory
+            return _context.Inventories.Where(inventory => inventory.StoreId == StoreID).Select(
+                inventories => new Model.Inventory()
             {
-                StoreID = i.StoreId,
-                ProductID = i.ProductId,
-                Quantity = i.Quantity
-            }).ToList();
+                InventoryID = inventories.InventoryId,
+                StoreID = inventories.StoreId,
+                ProductID = inventories.ProductId,
+                Quantity = inventories.Quantity
+            }
+            ).ToList();
         }
         public Models.Inventory GetSingleInventory(int StoreID, int ProductID)
         {

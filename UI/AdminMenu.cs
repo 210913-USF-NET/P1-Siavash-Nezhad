@@ -32,6 +32,12 @@ namespace UI
                 switch (Console.ReadLine())
                 {
                     case "0":
+                        int StoreID = Int32.Parse(Console.ReadLine());
+                        List<Inventory> storeInventory = GetInventory(StoreID);
+                        foreach (Inventory inventory in storeInventory)
+                        {
+                            Console.WriteLine(inventory.ToString());
+                        }
                         break;
 
                     case "1":
@@ -117,6 +123,16 @@ namespace UI
         {
             Models.Inventory singleinventory = _bl.GetSingleInventory(StoreID,ProductID);
             return singleinventory;
+        }
+        public List<Models.Inventory> GetInventory(int StoreID)
+        {
+            List<Models.Inventory> storeinventory = _bl.GetInventory(StoreID);
+            // foreach (Models.Inventory inventory in storeinventory)
+            // {
+            //     inventory.ProductID = inventory.ProductID;
+            //     inventory.Quantity = 
+            // }
+            return storeinventory;
         }
     }
 }
