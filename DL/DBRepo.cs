@@ -69,15 +69,15 @@ namespace DL
             ).ToList();
         }
 
-        public StoreFront AddStoreFront(StoreFront store)
-        {
-            throw new NotImplementedException();
-        }
+        // public StoreFront AddStoreFront(StoreFront store)
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public List<Model.StoreFront> GetAllStoreFronts()
         {
             return _context.StoreFronts.Select(
-                StoreFront => new Models.StoreFront() 
+                StoreFront => new Models.StoreFront()
                 {
                     StoreID = StoreFront.StoreId,
                     Address = StoreFront.Address
@@ -85,14 +85,14 @@ namespace DL
                 ).ToList();
         }
 
-        public StoreFront GetStoreFront(int StoreID)
-        {
-            throw new NotImplementedException();
-        }
+        // public StoreFront GetStoreFront(int StoreID)
+        // {
+        //     throw new NotImplementedException();
+        // }
         public List<Product> GetAllProducts()
         {
             return _context.Products.Select(
-                Product => new Models.Product() 
+                Product => new Models.Product()
                 {
                     ProductID = Product.ProductId,
                     DiscFormat = Product.DiscFormat,
@@ -108,22 +108,31 @@ namespace DL
             throw new NotImplementedException();
         }
 
-        public Inventory AddInventory(Inventory inventory)
-        {
-            throw new NotImplementedException();
-        }
+        // public Inventory AddInventory(Inventory inventory)
+        // {
+        //     throw new NotImplementedException();
+        // }
 
         public List<Inventory> GetInventory(int StoreID)
         {
-            // _context.Inventories.Include("Product").Select(i => 
-            // new Model.Inventory{
-            //     StoreID = i.StoreId,
-            //     Product = new Model.Product{
-            //         ProductID = i.Product.ProductId,
-            //     },
-
-            // }).ToList();
-            throw new NotImplementedException();
+            return _context.Inventories.Select
+            (i => new Model.Inventory
+            {
+                StoreID = i.StoreId,
+                ProductID = i.ProductId,
+                Quantity = i.Quantity
+            }).ToList();
+        }
+        public Models.Inventory GetSingleInventory(int StoreID, int ProductID)
+        {
+            Entity.Inventory myInventory = _context.Inventories.FirstOrDefault(x => x.StoreId == StoreID && x.ProductId == ProductID);
+            return new Models.Inventory()
+            {
+                InventoryID = myInventory.InventoryId,
+                StoreID = myInventory.StoreId,
+                ProductID = myInventory.ProductId,
+                Quantity = myInventory.Quantity
+            };
         }
         public Models.Product GetProduct(int ProductID)
         {
@@ -177,5 +186,13 @@ namespace DL
                 DateOrder = orderToAdd.DateOrder
             };
         }
+        public void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct)
+        {
+            Entities.Inventory updatedInventory = (from i in _context.Inventories where i.ProductId == orderedProduct.ProductID && i.StoreId == storeToUpdate select i).SingleOrDefault();
+            updatedInventory.Quantity = updatedInventory.Quantity - orderedProduct.Quantity;
+            _context.SaveChanges();
+            _context.ChangeTracker.Clear();
+        }
+
     }
 }

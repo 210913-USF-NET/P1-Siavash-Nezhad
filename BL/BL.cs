@@ -13,10 +13,10 @@ namespace BLogic
         {
             _repo = repo;
         }
-        public StoreFront AddStoreFront(StoreFront store)
-        {
-            return _repo.AddStoreFront(store);
-        }
+        // public StoreFront AddStoreFront(StoreFront store)
+        // {
+        //     return _repo.AddStoreFront(store);
+        // }
         public List<StoreFront> GetAllStoreFronts()
         {
             return _repo.GetAllStoreFronts();
@@ -45,13 +45,17 @@ namespace BLogic
         {
             return _repo.UpdateCustomer(customer);
         }
-        public Inventory AddInventory(Inventory inventory)
-        {
-            return _repo.AddInventory(inventory);
-        }
+        // public Inventory AddInventory(Inventory inventory)
+        // {
+        //     return _repo.AddInventory(inventory);
+        // }
         public List<Inventory> GetInventory(int store)
         {
             return _repo.GetInventory(store);
+        }
+        public Inventory GetSingleInventory(int StoreID, int ProductID)
+        {
+            return _repo.GetSingleInventory(StoreID,ProductID);
         }
         public LineItem AddLineItem(LineItem lineitem)
         {
@@ -60,6 +64,10 @@ namespace BLogic
         public Models.Order AddOrder(Models.Customer cust)
         {
             return _repo.AddOrder(cust);
+        }
+        public void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct)
+        {
+            _repo.UpdateStock(storeToUpdate, orderedProduct);
         }
     }
 }

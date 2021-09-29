@@ -7,9 +7,9 @@ namespace DL
     public interface IRepo
     {
         // Stores [Add Store, Get Stores]
-        StoreFront AddStoreFront(StoreFront store);
+        // StoreFront AddStoreFront(StoreFront store);
         List<StoreFront> GetAllStoreFronts();
-        StoreFront GetStoreFront(int StoreID);
+        // StoreFront GetStoreFront(int StoreID);
 
         // Products [Add Product, Get Products]
         Product GetProduct(int ProductID);
@@ -22,9 +22,11 @@ namespace DL
         Customer UpdateCustomer(Customer customer);
 
         // Inventory
-        Inventory AddInventory(Inventory inventory);
+        // Inventory AddInventory(Inventory inventory);
         List<Inventory> GetInventory(int StoreID);
+        Inventory GetSingleInventory(int StoreID, int ProductID);
         LineItem AddLineItem(LineItem lineitem);
         Order AddOrder(Customer cust);
+        void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct);
     }
 }

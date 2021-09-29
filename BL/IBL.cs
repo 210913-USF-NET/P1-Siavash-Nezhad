@@ -6,7 +6,7 @@ namespace BLogic
     public interface IBL
     {
         // Stores [Add Store, Get Stores]
-        StoreFront AddStoreFront(StoreFront store);
+        // StoreFront AddStoreFront(StoreFront store);
         List<StoreFront> GetAllStoreFronts();
 
         // Products [Add Product, Get Products]
@@ -21,9 +21,11 @@ namespace BLogic
 
         // Inventories
         List<Inventory> GetInventory(int StoreID);
-        Inventory AddInventory(Inventory inventory);
+        Inventory GetSingleInventory(int StoreID, int ProductID);
+        // Inventory AddInventory(Inventory inventory);
         LineItem AddLineItem(LineItem lineitem);
 
         Order AddOrder(Customer cust);
+        void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct);
     }
 }
