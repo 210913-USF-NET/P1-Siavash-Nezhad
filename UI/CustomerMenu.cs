@@ -44,7 +44,6 @@ namespace UI
                 }
 
                 Console.ForegroundColor = ConsoleColor.Red;
-                MenuFactory.currentUser = null;
                 Console.WriteLine("Email does not match our records. Please try again or sign up for an account.");
                 Console.WriteLine("--------------------");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -69,7 +68,7 @@ namespace UI
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Not yet implemented.");
                             Console.ForegroundColor = ConsoleColor.White;
-                            break; 
+                            goto CustomerHub;
 
                         case "1":
                             //Place new order
@@ -78,8 +77,11 @@ namespace UI
 
                         case "2":
                             // update customer!
-                            _bl.UpdateCustomer(MenuFactory.currentUser);
-                            break;
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Not yet implemented.");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            // _bl.UpdateCustomer(MenuFactory.currentUser);
+                            goto CustomerHub;
 
                         case "x": 
                             MenuFactory.currentUser = null;

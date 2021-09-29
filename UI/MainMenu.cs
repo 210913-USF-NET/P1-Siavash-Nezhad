@@ -19,18 +19,18 @@ namespace UI
                 Console.WriteLine("Please choose an option or type 'x' to exit.");
                 Console.WriteLine("[0] - New Account");
                 Console.WriteLine("[1] - Log In");
-                Console.WriteLine("[x] - Exit");
+                Console.WriteLine("[X] - Exit");
 
-                input = Console.ReadLine();
+                input = Console.ReadLine().ToLower();
 
                 switch (input)
                 {
 
 
-                    case "admin":
+                    case "shrek":
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("--------------------");
-                        Console.WriteLine("Welcome Admin!");
+                        Console.WriteLine("Welcome Shrek!");
                         MenuFactory.GetMenu("admin").Start();
                         Console.ForegroundColor = ConsoleColor.White;
                     break;
@@ -46,8 +46,10 @@ namespace UI
                     break;
 
                     case "x":
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("--------------------");
                         Console.WriteLine("Thank you, please come again!");
+                        Console.ForegroundColor = ConsoleColor.White;
                         exit = true;
                     break;
 
