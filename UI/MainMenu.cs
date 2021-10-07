@@ -37,7 +37,7 @@ namespace UI
 
                     case "0":
                         Console.WriteLine("--------------------");
-                        Console.WriteLine("Let's create you a new account:");
+                        Console.WriteLine("Let's create you a newclear account:");
                         MenuFactory.GetMenu("new-customer").Start();
                     break;
                     
