@@ -1,0 +1,288 @@
+[33mcommit 4d513824bb9774ee19d79accb049f1ab5af0af72[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Oct 7 09:06:32 2021 -0500
+
+    initial commit
+
+[33mcommit cf1f93c166797cdb96452d42ab82ebac856eabc6[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 10:52:50 2021 -0500
+
+    login redirect bug fixed
+
+[33mcommit adfd308e3416a3b098ba0e84d2d5600b8647580a[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 10:42:26 2021 -0500
+
+    The program as it was presented
+
+[33mcommit 49e8ab307c7603d35e5f903033d04bd4e4d31527[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 10:12:45 2021 -0500
+
+    finishing touches and aesthetics
+
+[33mcommit cdf77e4945adac062f04e2c4adeb5798733055ec[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 08:30:13 2021 -0500
+
+    bug fixes ahead of presentation
+
+[33mcommit f353d603a25770aecde36d68d8847618fdca85d7[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 03:09:45 2021 -0500
+
+    MVP IS MET
+
+[33mcommit 06bea54e630ce58acea00cd756d04ffff5878c23[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Wed Sep 29 02:35:53 2021 -0500
+
+    Bug fixes, inventory check now implemented
+
+[33mcommit 7f05fe23cc3977dc1d190fc1e97868ac8cc4dc43[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Tue Sep 28 22:30:41 2021 -0500
+
+    inventory updating implemented
+
+[33mcommit afad0b948311dfd29c68540bf10c6882672c703b[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Tue Sep 28 22:30:30 2021 -0500
+
+    inventory updating implemented
+
+[33mcommit 89be4ae039c51eeda63d7441587f0ba415e388ff[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Tue Sep 28 20:58:36 2021 -0500
+
+    ordering persists!
+
+[33mcommit a4e474df39627ff418ce64c68e386107fcc888fa[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Tue Sep 28 18:19:07 2021 -0500
+
+    idek what to call this anymore
+
+[33mcommit 434e2163c191463388049b6713158ecd86b435e8[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Mon Sep 27 22:46:05 2021 -0500
+
+    can't add lineitems to database just yet
+
+[33mcommit 4768c28014e8c41c7318d1a23e524da6df6b7ce1[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Mon Sep 27 22:36:02 2021 -0500
+
+    Ordering ALMOST working
+
+[33mcommit a56eecb789b1291c3ee8a299da6d6f08cb560904[m
+Merge: be389ea e13784b
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Mon Sep 27 14:30:50 2021 -0500
+
+    Merge branch 'main' of https://github.com/210913-USF-NET/P0-Siavash-Nezhad
+
+[33mcommit be389eafc88a73efb450b34c19fd28cc37c7276b[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Mon Sep 27 14:30:24 2021 -0500
+
+    end of weekend push
+
+[33mcommit e13784be06685dafdafa92edba662e6cd690f9dd[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 22:10:42 2021 -0500
+
+    end of weekend push
+
+[33mcommit e46c5aac5b64898f7fd1e992742141771ac10b4f[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 21:07:41 2021 -0500
+
+    Returning user login works!
+
+[33mcommit 72acc13110bf5021fda0ef0074f8e58d380ac865[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 20:14:59 2021 -0500
+
+    added colors to new customer menu
+
+[33mcommit 403a75b455b2b2c9543596be4e10f85001ec71b5[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 20:08:28 2021 -0500
+
+    New Customer Menu now prompts one parameter at a time
+
+[33mcommit 9a89f479761723509b7be024d6e493430922d8cb[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 16:47:05 2021 -0500
+
+    Changed to BLogic due to conflict
+
+[33mcommit 89027749e7266ba0525820734cfb7ff50d623434[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sun Sep 26 00:04:27 2021 -0500
+
+    updated DBRepo
+
+[33mcommit 47816b26471eaf7ae26dba069d058dd9113a01ed[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 23:29:28 2021 -0500
+
+    New Customer Menu progress
+
+[33mcommit 5a2da9d1b077873005cde77ab9966bc3e1584b1f[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 23:12:08 2021 -0500
+
+    rescaffolded
+
+[33mcommit 30283252d18fa6ef7772692079901db7049d13eb[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 21:52:54 2021 -0500
+
+    connected menu to db
+
+[33mcommit fb33cbd4f6c8c8a9138b9970bce0088e73cccdd8[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 17:43:36 2021 -0500
+
+    linked to db and scaffolded
+
+[33mcommit 499a663a46f6060fdab13e4972613149dadc35b3[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 17:30:38 2021 -0500
+
+    linked to db
+
+[33mcommit db34e3d97d92d47993808804bd4f071c0cf641ce[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 17:24:28 2021 -0500
+
+    scaffolded
+
+[33mcommit e8c8163b825305f8eb45c007a3d52c5b9ea7883b[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 17:15:50 2021 -0500
+
+    fixed model constructors
+
+[33mcommit 47ef5f67afab2b29f742502da45bdb5ad3fb76a9[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Sat Sep 25 17:07:08 2021 -0500
+
+    pre-db connection
+
+[33mcommit 3385d6193f79ca902fd507a3973225cad5f64f5b[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Fri Sep 24 20:32:01 2021 -0500
+
+    ready to code menus
+
+[33mcommit 8c89e57caffa5d243675492d128e5ade40fb685b[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Fri Sep 24 20:23:20 2021 -0500
+
+    Working menu
+
+[33mcommit 4399e138064f0efe07f69e5aeef4c35e6b142c33[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Fri Sep 24 16:42:28 2021 -0500
+
+    i dont even know
+
+[33mcommit 9a295acf8a3c814158d9cbc9e44c8a7dc5c958e5[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Fri Sep 24 16:11:44 2021 -0500
+
+    ironing out bugs
+
+[33mcommit 09920f2a276e04f4a9f4483932ddb9fc3b17346a[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 21:21:45 2021 -0500
+
+    Worked on menus
+
+[33mcommit 3961330d54026fbcabea7f01fb3b1c3d0415c821[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 21:09:17 2021 -0500
+
+    Starting menus
+
+[33mcommit 85262916af30a83857c68570b9fdba2ed8d133e6[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 21:05:06 2021 -0500
+
+    Repo updates
+
+[33mcommit d25bfb5fae5dbf168297ba02b5a8469cb56aeacb[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 20:40:54 2021 -0500
+
+    Worked on BL
+
+[33mcommit 8e21eee1b7289e990def8e2815a1746d76495573[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 20:25:06 2021 -0500
+
+    Finished models
+
+[33mcommit 0f9a78a135b0c439b9df1c52db549f07a79d1d49[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 20:09:56 2021 -0500
+
+    Finished customers
+
+[33mcommit e3409acf074cfccd8ed97c580e10d03308ecfe15[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 09:55:33 2021 -0500
+
+    Customer updates
+
+[33mcommit 4cd7d2b6c4b95e7348d64f2637c2606d1a9bdb2d[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 09:47:26 2021 -0500
+
+    Customer parameters
+
+[33mcommit 01b1679edd3c40dceae933f1e1f8efa542d75147[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 09:38:39 2021 -0500
+
+    Product model
+
+[33mcommit 2108da37ddf2326f0b674db71289992bdaae27f9[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 09:34:40 2021 -0500
+
+    Store name
+
+[33mcommit 7b04de13cfed854da1ddddeeacbd236510f66e3a[m
+Author: Siavash Nezhad <siavash.nezhad@revature.net>
+Date:   Thu Sep 23 09:14:06 2021 -0500
+
+    commit
+
+[33mcommit a4eed6513739f02e8cbb66f27376ae15fb8375f4[m
+Author: Juniper Song <songminseonk@gmail.com>
+Date:   Wed Sep 15 23:45:54 2021 -0400
+
+    solution file
+
+[33mcommit 3e1f96a3f9b75f4170de2e7a56e3558902fdafb3[m
+Author: Juniper Song <songminseonk@gmail.com>
+Date:   Wed Sep 15 12:48:20 2021 -0400
+
+    finished scaffolding
+
+[33mcommit 8131d9427438755011dc4b33f3ad56cfd2831d5b[m
+Author: Juniper Song <songminseonk@gmail.com>
+Date:   Wed Sep 15 12:06:47 2021 -0400
+
+    all my models
+
+[33mcommit a704346a3690dd7838cf072d56b4fa1d114be9b6[m
+Author: Juniper Song <songminseonk@gmail.com>
+Date:   Wed Sep 15 11:47:02 2021 -0400
+
+    scaffolding store app

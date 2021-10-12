@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Entity = DL.Entities;
 using System.Data.SqlClient;
 using System.IO;
 using Models;
@@ -14,16 +13,16 @@ namespace DL
     public class DBRepo : IRepo
     {
         string connectionString = File.ReadAllText(@"../connectionString.txt");
-        private Entity.siadbContext _context;
+        private DBContext _context;
 
-        public DBRepo(Entity.siadbContext context)
+        public DBRepo(DBContext context)
         {
             _context = context;
         }
 
         public Models.Customer AddCustomer(Models.Customer custom)
         {
-            Entity.Customer customToAdd = new Entity.Customer()
+            Customer customToAdd = new Customer()
             {
                 Name = custom.Name,
                 Email = custom.Email,
@@ -59,7 +58,7 @@ namespace DL
             return _context.Customers.AsNoTracking().Select(
                 customers => new Models.Customer()
                 {
-                    CustomerID = customers.CustomerId,
+                    CustomerID = customers.CustomerID,
                     Name = customers.Name,
                     Email = customers.Email,
                     Address = customers.Address,
@@ -79,7 +78,7 @@ namespace DL
             return _context.StoreFronts.Select(
                 StoreFront => new Models.StoreFront()
                 {
-                    StoreID = StoreFront.StoreId,
+                    StoreID = StoreFront.StoreID,
                     Address = StoreFront.Address
                 }
                 ).ToList();
@@ -94,7 +93,7 @@ namespace DL
             return _context.Products.Select(
                 Product => new Models.Product()
                 {
-                    ProductID = Product.ProductId,
+                    ProductID = Product.ProductID,
                     DiscFormat = Product.DiscFormat,
                     DiscCap = Product.DiscCap,
                     Color = Product.Color,
@@ -108,7 +107,7 @@ namespace DL
             return _context.Customers.Where(u => u.Name.ToLower().Contains(name.ToLower())).Select(
                 c => new Models.Customer()
             {
-                        CustomerID = c.CustomerId,
+                        CustomerID = c.CustomerID,
                         Name = c.Name,
                         Email = c.Email,
                         Address = c.Address,
@@ -126,33 +125,33 @@ namespace DL
 
         public List<Models.Inventory> GetInventory(int StoreID)
         {
-            return _context.Inventories.Where(inventory => inventory.StoreId == StoreID).Select(
+            return _context.Inventories.Where(inventory => inventory.StoreID == StoreID).Select(
                 inventories => new Model.Inventory()
             {
-                InventoryID = inventories.InventoryId,
-                StoreID = inventories.StoreId,
-                ProductID = inventories.ProductId,
+                InventoryID = inventories.InventoryID,
+                StoreID = inventories.StoreID,
+                ProductID = inventories.ProductID,
                 Quantity = inventories.Quantity
             }
             ).ToList();
         }
         public Models.Inventory GetSingleInventory(int StoreID, int ProductID)
         {
-            Entity.Inventory myInventory = _context.Inventories.FirstOrDefault(x => x.StoreId == StoreID && x.ProductId == ProductID);
+            Inventory myInventory = _context.Inventories.FirstOrDefault(x => x.StoreID == StoreID && x.ProductID == ProductID);
             return new Models.Inventory()
             {
-                InventoryID = myInventory.InventoryId,
-                StoreID = myInventory.StoreId,
-                ProductID = myInventory.ProductId,
+                InventoryID = myInventory.InventoryID,
+                StoreID = myInventory.StoreID,
+                ProductID = myInventory.ProductID,
                 Quantity = myInventory.Quantity
             };
         }
         public Models.Product GetProduct(int ProductID)
         {
-            Entity.Product myProduct = _context.Products.FirstOrDefault(x => x.ProductId == ProductID);
+            Product myProduct = _context.Products.FirstOrDefault(x => x.ProductID == ProductID);
             return new Models.Product()
             {
-                ProductID = myProduct.ProductId,
+                ProductID = myProduct.ProductID,
                 DiscFormat = myProduct.DiscFormat,
                 DiscCap = myProduct.DiscCap,
                 Color = myProduct.Color,
@@ -161,11 +160,11 @@ namespace DL
         }
         public Models.LineItem AddLineItem(Models.LineItem newlineitem)
         {
-            Entity.LineItem lineitemToAdd = new Entity.LineItem()
+            LineItem lineitemToAdd = new LineItem()
             {
-                OrderId = newlineitem.OrderID,
-                StoreId = newlineitem.StoreID,
-                ProductId = newlineitem.ProductID,
+                OrderID = newlineitem.OrderID,
+                StoreID = newlineitem.StoreID,
+                ProductID = newlineitem.ProductID,
                 Quantity = newlineitem.Quantity
             };
 
@@ -183,9 +182,9 @@ namespace DL
         }
         public Models.Order AddOrder(Models.Customer cust)
         {
-            Entity.Order orderToAdd = new Entity.Order()
+            Order orderToAdd = new Order()
             {
-                CustomerId = cust.CustomerID
+                CustomerID = cust.CustomerID
             }
             ;
             orderToAdd = _context.Add(orderToAdd).Entity;
@@ -194,14 +193,14 @@ namespace DL
 
             return new Models.Order()
             {
-                OrderID = orderToAdd.OrderId,
-                CustomerID = orderToAdd.CustomerId,
+                OrderID = orderToAdd.OrderID,
+                CustomerID = orderToAdd.CustomerID,
                 DateOrder = orderToAdd.DateOrder
             };
         }
         public void UpdateStock(int storeToUpdate, Models.LineItem orderedProduct)
         {
-            Entities.Inventory updatedInventory = (from i in _context.Inventories where i.ProductId == orderedProduct.ProductID && i.StoreId == storeToUpdate select i).SingleOrDefault();
+            Inventory updatedInventory = (from i in _context.Inventories where i.ProductID == orderedProduct.ProductID && i.StoreID == storeToUpdate select i).SingleOrDefault();
             updatedInventory.Quantity = updatedInventory.Quantity - orderedProduct.Quantity;
             _context.SaveChanges();
             _context.ChangeTracker.Clear();
