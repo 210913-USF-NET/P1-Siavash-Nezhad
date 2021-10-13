@@ -25,8 +25,10 @@ namespace WebUI.Controllers
         }
 
         // GET: StoreController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ViewInventory(int id)
         {
+            ViewBag.Stock = _bl.GetInventory(id);
+            ViewBag.ProductInfo = _bl.GetAllProducts();
             return View();
         }
 
