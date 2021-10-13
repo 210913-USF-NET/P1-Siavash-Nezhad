@@ -1,8 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    string status = (string)ViewData["status"];
+    Context.Response.Cookies.Append("checkoutMsg", "Checkout Successful.");
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (status == "user")
+{
+    <partial name="_UserIndex" view-data="ViewData" />
+}
+
+@if (status == "guest")
+{
+    <partial name="_GuestIndex" view-data="ViewData" />
+}
+
+@if (status == "admin")
+{
+    <partial name="_AdminIndex" view-data="ViewData" />
+}

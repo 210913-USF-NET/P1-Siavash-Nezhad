@@ -22,6 +22,19 @@ namespace WebUI.Controllers
         {
             return View();
         }
+        public ActionResult _AdminIndex()
+        {
+            return View();
+        }
+
+        public ActionResult _UserIndex()
+        {
+            return View();
+        }
+        public ActionResult _GuestIndex()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -42,7 +42,7 @@ namespace WebUI.Controllers
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("_GuestIndex", "Home");
             }
         }
         public ActionResult Profile(int id)
@@ -50,7 +50,7 @@ namespace WebUI.Controllers
             if (Request.Cookies["userId"] != null)
             {
                 Customer currentUser = _bl.GetCustomer(Request.Cookies["userName"])[0];
-                return View(currentUser);
+                return RedirectToAction("_UserIndex","Home");
             }
             else
             {
@@ -83,9 +83,9 @@ namespace WebUI.Controllers
         }
         public ActionResult Login()
         {
-            if (Request.Cookies["userID"] != null)
+            if (Request.Cookies["userId"] != null)
             {
-                return RedirectToAction("Profile");
+                return RedirectToAction("Login", new { email = "userEmail" });
             }
             else
             {
@@ -109,18 +109,16 @@ namespace WebUI.Controllers
                         HttpContext.Response.Cookies.Append("admin", "false");
                         HttpContext.Response.Cookies.Append("userName", customer.Name);
                         success = true;
-                        return View(_bl.GetCustomer(email));
+                        return RedirectToAction("_UserIndex", "Home");
                     }
                 }
 
-                if (email == "@dmin")
+                if (email == "shrek")
                 {
-                    HttpContext.Response.Cookies.Append("userEmail", email);
                     HttpContext.Response.Cookies.Append("user", "false");
                     HttpContext.Response.Cookies.Append("admin", "true");
-                    HttpContext.Response.Cookies.Append("userName", "@dmin");
                     success = true;
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction("_AdminIndex", "Home");
                 }
 
                 if (!success)
