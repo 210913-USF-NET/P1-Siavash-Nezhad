@@ -16,7 +16,6 @@ namespace WebUI.Controllers
         {
             _bl = bl;
         }
-
         // GET: LoginController
         public ActionResult Index(string searching)
         {
