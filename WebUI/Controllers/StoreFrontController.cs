@@ -23,6 +23,34 @@ namespace WebUI.Controllers
             List<StoreFront> allStoreFronts = _bl.GetAllStoreFronts();
             return View(allStoreFronts);
         }
+        public ActionResult NewLineItem()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GetProduct(int StoreID)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return View("SelectProduct");
+                }
+                //needs error message
+                return NewLineItem();
+            }
+            catch
+            {
+                return NewLineItem();
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NewLineItem(int StoreID, int ProductID)
+        {
+            return View("SelectQuantity");
+        }
 
         // GET: StoreController/Details/5
         public ActionResult ViewInventory(int id)

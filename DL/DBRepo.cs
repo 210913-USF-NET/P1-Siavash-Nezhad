@@ -158,6 +158,18 @@ namespace DL
                 Price = myProduct.Price
             };
         }
+        public Models.Product GetProduct(string DiscFormat, int DiscCap, string Color)
+        {
+            Product myProduct = _context.Products.FirstOrDefault(x => x.DiscFormat == DiscFormat && x.DiscCap == DiscCap && x.Color == Color);
+            return new Models.Product()
+            {
+                ProductID = myProduct.ProductID,
+                DiscFormat = myProduct.DiscFormat,
+                DiscCap = myProduct.DiscCap,
+                Color = myProduct.Color,
+                Price = myProduct.Price
+            };
+        }
         public Models.LineItem AddLineItem(Models.LineItem newlineitem)
         {
             LineItem lineitemToAdd = new LineItem()

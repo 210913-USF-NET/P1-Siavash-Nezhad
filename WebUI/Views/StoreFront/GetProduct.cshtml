@@ -1,0 +1,46 @@
+﻿@model Models.Product
+@{
+    ViewData["Title"] = "GetProduct";
+}
+
+<h1>GetProduct</h1>
+
+
+<h4>Please select the product you wish to order by answering a few questions</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewLineItem" name="form1" id="form1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <br><br>
+            <label asp-for="DiscFormat">Select a disc format:</label>
+            <select name="format" id="format">
+                <option value="CD" selected="selected">CD</option>
+                <option value="DVD" selected="selected">DVD</option>
+                <option value="Blu-ray" selected="selected">Blu-ray</option>
+                <option value="4K" selected="selected">4K Blu-ray</option>
+            </select>
+            <br><br>
+            <label asp-for="Color">Select a case color:</label>
+            <select name="color" id="color">
+                <option value="Clear" selected="selected">Clear</option>
+                <option value="Black" selected="selected">Black</option>
+            </select>
+            <br><br>
+            <label asp-for="DiscCap">Select a disc capacity:</label>
+            <select name="capacity" id="capacity">
+                <option value="1" selected="selected">One</option>
+                <option value="2" selected="selected">Two</option>
+                <option value="3" selected="selected">Three</option>
+            </select>
+        </form>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,33 @@
+﻿@model Models.LineItem
+
+@{
+    ViewData["Title"] = "NewLineItem";
+}
+
+
+<h1>New Order</h1>
+
+<h4>Please select the product you wish to order by answering a few questions</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="NewLineItem">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="StoreID">Choose a store location:</label>
+            <select name="store" id="store">
+                <option value="1">Houston, TX</option>
+                <option value="2">Columbia, SC</option>
+                <option value="3">Yemen, SD</option>
+            </select>
+        </form>
+            <br><br>
+            <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
