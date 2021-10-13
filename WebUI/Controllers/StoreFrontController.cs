@@ -25,6 +25,11 @@ namespace WebUI.Controllers
         }
         public ActionResult NewLineItem()
         {
+            Response.Cookies.Delete("ProductID");
+            Response.Cookies.Delete("DiscFormat");
+            Response.Cookies.Delete("DiscCap");
+            Response.Cookies.Delete("Color");
+            Response.Cookies.Delete("StoreID");
             return View();
         }
         [HttpPost]
@@ -55,17 +60,21 @@ namespace WebUI.Controllers
             int newDiscCap = Int32.Parse(DiscCap);
             Product thisProduct = _bl.GetProduct(DiscFormat, newDiscCap, Color);
                 Response.Cookies.Append("ProductID", thisProduct.ProductID.ToString());
+            Response.Cookies.Delete("Quantity");
             return View("SelectQuantity");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QuantityConfirm(string Quantity)
+        {
+            Response.Cookies.Append("Quantity", Quantity);
+            return View("ConfirmOrder");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ConfirmOrder(string Quantity)
+        public ActionResult ConfirmOrder()
         {
-            if (Request.Cookies["Quantity"] != null)
-            {
-                Response.Cookies.Delete("Quantity");
-            }
-            Response.Cookies.Append("Quantity", Quantity);
             return View();
         }
 
@@ -76,15 +85,29 @@ namespace WebUI.Controllers
             newLineItem.Quantity = Int32.Parse(Request.Cookies["Quantity"]);
             _bl.AddLineItem(newLineItem);
             _bl.UpdateStock(newLineItem.StoreID, newLineItem);
-            return RedirectToAction("_UserIndex", "Customer");
+            return RedirectToAction("Profile", "Customer");
         }
 
         // GET: StoreController/Details/5
-        public ActionResult ViewInventory(int id)
+        public ActionResult ViewStoreInventory(string searching)
         {
-            ViewBag.Stock = _bl.GetInventory(id);
-            ViewBag.ProductInfo = _bl.GetAllProducts();
-            return View();
+            if (Request.Cookies["admin"] == "true")
+            {
+                if (!String.IsNullOrEmpty(searching))
+                {
+                    List<Inventory> inventory = _bl.GetInventory(Int32.Parse(searching));
+                    return View("ViewInventory",inventory);
+                }
+                else
+                {
+                    List<Inventory> inventory = _bl.GetInventory(1);
+                    return View("ViewInventory",inventory);
+                }
+            }
+            else
+            {
+                return RedirectToAction("_NavAdmin");
+            }
         }
 
         // GET: StoreController/Create
