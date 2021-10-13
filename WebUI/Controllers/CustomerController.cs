@@ -19,12 +19,11 @@ namespace WebUI.Controllers
         // GET: LoginController
         public ActionResult SearchCustomers()
         {
-            return View("Index");
+            List<Customer> allCustomers = _bl.GetAllCustomers();
+            return View("Index", allCustomers);
         }
         public ActionResult Index(string searching)
         {
-            if (Request.Cookies["userId"] != null)
-            {
                 if (Request.Cookies["admin"] == "true")
                 {
                     if (!String.IsNullOrEmpty(searching))
@@ -42,11 +41,6 @@ namespace WebUI.Controllers
                 {
                     return RedirectToAction("Profile", Convert.ToInt32(Request.Cookies["userId"]));
                 }
-            }
-            else
-            {
-                return RedirectToAction("_GuestIndex", "Home");
-            }
         }
         public ActionResult Profile(int id)
         {
