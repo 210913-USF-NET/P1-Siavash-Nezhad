@@ -31,19 +31,7 @@ namespace WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult GetProduct(int StoreID)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    return View("SelectProduct");
-                }
-                //needs error message
-                return NewLineItem();
-            }
-            catch
-            {
-                return NewLineItem();
-            }
+            return View("SelectProduct");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
