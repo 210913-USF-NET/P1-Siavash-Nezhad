@@ -1,0 +1,27 @@
+﻿@model Models.LineItem
+
+@{
+    ViewData["Title"] = "SelectQuantity";
+}
+
+<h1>SelectQuantity</h1>
+
+<h4>Please select the product you wish to order by answering a few questions</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SubmitOrder" name="form2" id="form2">
+            <label asp-for="Quantity" class="control-label"></label>
+            <input asp-for="Quantity" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

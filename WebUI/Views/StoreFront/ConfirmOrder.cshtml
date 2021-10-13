@@ -1,0 +1,29 @@
+﻿@{
+    string StoreID = Context.Request.Cookies["StoreID"];
+    string DiscFormat = Context.Request.Cookies["DiscFormat"];
+    string Color = Context.Request.Cookies["Color"];
+    string DiscCap = Context.Request.Cookies["DiscCap"];
+    string Quantity = Context.Request.Cookies["Quantity"];
+}
+
+<h1>Confirm Your Order</h1>
+
+<h4>Please ensure everything is correct as shown</h4>
+<hr />
+
+Disc Format: @DiscFormat
+<br>
+<br>
+Case Color: @Color
+<br>
+<br>
+Disc Capacity: @DiscCap
+<br>
+<br>
+Quantity: @Quantity
+
+<form asp-action="SubmitOrder" name="form4" id="form4">
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+</form>

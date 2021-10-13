@@ -17,6 +17,10 @@ namespace WebUI.Controllers
             _bl = bl;
         }
         // GET: LoginController
+        public ActionResult SearchCustomers()
+        {
+            return View("Index");
+        }
         public ActionResult Index(string searching)
         {
             if (Request.Cookies["userId"] != null)

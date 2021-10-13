@@ -25,6 +25,10 @@ namespace BLogic
         {
             return _repo.GetProduct(ProductID);
         }
+        public Product GetProduct(string DiscFormat, int DiscCap, string Color)
+        {
+            return _repo.GetProduct(DiscFormat, DiscCap, Color);
+        }
         public List<Product> GetAllProducts()
         {
             return _repo.GetAllProducts();

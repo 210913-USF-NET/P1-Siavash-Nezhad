@@ -8,6 +8,7 @@ namespace DL
     {
         List<StoreFront> GetAllStoreFronts();
         Product GetProduct(int ProductID);
+        Product GetProduct(string DiscFormat, int DiscCap, string Color);
         List<Product> GetAllProducts();
         Customer AddCustomer(Customer customer);
         List<Customer> GetAllCustomers();

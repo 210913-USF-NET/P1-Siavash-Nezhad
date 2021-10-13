@@ -11,6 +11,7 @@ namespace BLogic
 
         // Products [Add Product, Get Products]
         Product GetProduct(int ProductID);
+        Product GetProduct(string DiscFormat, int DiscCap, string Color);
         List<Product> GetAllProducts();
         
         // Customers [Add Customer, Get Customers/Customer, Update Customer]

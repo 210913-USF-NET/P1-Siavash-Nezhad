@@ -29,15 +29,54 @@ namespace WebUI.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult GetProduct(int StoreID)
+        public ActionResult GetProduct(string StoreID)
         {
-            return View("SelectProduct");
+            if (Request.Cookies["StoreID"] != null)
+            {
+                Response.Cookies.Delete("StoreID");
+            }
+            Response.Cookies.Append("StoreID", StoreID);
+            return View("GetProduct");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewLineItem(int StoreID, int ProductID)
+        public ActionResult NewLineItem(string DiscFormat, string DiscCap, string Color)
         {
+            if (Request.Cookies["ProductID"] != null)
+            {
+                Response.Cookies.Delete("ProductID");
+                Response.Cookies.Delete("DiscFormat");
+                Response.Cookies.Delete("DiscCap");
+                Response.Cookies.Delete("Color");
+            }
+            Response.Cookies.Append("DiscFormat", DiscFormat);
+            Response.Cookies.Append("DiscCap", DiscCap);
+            Response.Cookies.Append("Color", Color);
+            int newDiscCap = Int32.Parse(DiscCap);
+            Product thisProduct = _bl.GetProduct(DiscFormat, newDiscCap, Color);
+                Response.Cookies.Append("ProductID", thisProduct.ProductID.ToString());
             return View("SelectQuantity");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmOrder(string Quantity)
+        {
+            if (Request.Cookies["Quantity"] != null)
+            {
+                Response.Cookies.Delete("Quantity");
+            }
+            Response.Cookies.Append("Quantity", Quantity);
+            return View();
+        }
+
+        public ActionResult SubmitOrder(LineItem newLineItem)
+        {
+            newLineItem.ProductID = Int32.Parse(Request.Cookies["ProductID"]);
+            newLineItem.StoreID = Int32.Parse(Request.Cookies["StoreID"]);
+            newLineItem.Quantity = Int32.Parse(Request.Cookies["Quantity"]);
+            _bl.AddLineItem(newLineItem);
+            _bl.UpdateStock(newLineItem.StoreID, newLineItem);
+            return RedirectToAction("_UserIndex", "Customer");
         }
 
         // GET: StoreController/Details/5
